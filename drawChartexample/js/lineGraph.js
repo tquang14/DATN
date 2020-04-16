@@ -1,9 +1,8 @@
 $(document).ready(function() {
 	$.ajax({
-		url: "http://localhost/drawChartexample/getDataFormDatabase.php",
+		url: "http://192.168.1.20/drawChartexample/getDataFormDatabase.php",
 		type: "GET",
 		success: function(data) {
-			console.log(data);
 			var day = [];
 			var humidity = [];
 			var temperature = [];
@@ -20,7 +19,7 @@ $(document).ready(function() {
 					{
 						label: "humidity",
 						fill: true,
-						lineTension: "0.1",
+						lineTension: "0",
 						backgroundColor: [
 			                'rgba(255, 99, 132, 0.2)',
 			                'rgba(54, 162, 235, 0.2)',

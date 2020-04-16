@@ -1,0 +1,1 @@
+new QRCode(document.getElementById("qrCode"), "test noi dung");

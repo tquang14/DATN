@@ -1,5 +1,6 @@
 <?php 
 	// setting header
+	header('Access-Control-Allow-Origin: *');
 	header('Content-Type: application/json');
 	// database define
 	define('server', '127.0.0.1');
