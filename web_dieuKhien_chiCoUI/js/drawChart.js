@@ -1,7 +1,44 @@
-// load default chart to html
-$(document).ready(function() {
+// some global var
+var graphHum;
+var graphTem;
+var graphSM;
+// draw chart to html
+function draw(data, labels, label, canvasID) {
+    console.log("draw");
+    chartData = {
+        labels: labels,
+        datasets: [{
+            label: label,
+            fill: true,
+            lineTension: "0",
+            backgroundColor: 'rgba(255, 206, 86, 0.2)',
+            borderColor: '#2c3e50',
+            data: data
+        }]
+    };
+    var chartOptions = {
+        responsive: true,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    };
+    var ctx = document.getElementById(canvasID);
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: chartOptions
+    });
+    return chart;
+}
+
+// load default data when web first open and call draw to draw chart
+function drawDefault() {
     $.ajax({
-        url: "http://192.168.1.20/drawChartexample/getDataFormDatabase.php",
+        url: "http://192.168.1.20/DATN/getDataFormDatabase.php",
         type: "GET",
         success: function(data) {
             var day = [];
@@ -14,120 +51,51 @@ $(document).ready(function() {
                 humidity.push(data[i].humidity);
                 solidiMoisture.push(data[i].solidiMoisture);
             }
-            var humidityData = {
-                labels: day,
-                datasets: [{
-                    label: "Humidity",
-                    fill: true,
-                    lineTension: "0",
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    data: humidity
-                }]
-            };
-            var temperatureData = {
-                labels: day,
-                datasets: [{
-                    label: "Temperature",
-                    fill: true,
-                    lineTension: "0",
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    data: temperature
-                }]
-            };
-            var solidMoistureData = {
-                labels: day,
-                datasets: [{
-                    label: "Solid Moisture",
-                    fill: true,
-                    lineTension: "0",
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    data: solidiMoisture
-                }]
-            };
-            var chartOptions = {
-                responsive: true,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-            var ctxHumidity = $("#chartHumidity");
-            var lineGraph = new Chart(ctxHumidity, {
-                type: 'line',
-                data: humidityData,
-                options: chartOptions
-            });
-
-            var ctxTemperature = $("#chartTemperature");
-            var lineGraph = new Chart(ctxTemperature, {
-                type: 'line',
-                data: temperatureData,
-                options: chartOptions
-            });
-
-            var ctxsolidMoisture = $("#chartSolidiMoisture");
-            var lineGraph = new Chart(ctxsolidMoisture, {
-                type: 'line',
-                data: solidMoistureData,
-                options: chartOptions
-            });
+            graphHum = draw(humidity, day, 'Humidity', 'chartHumidity');
+            graphTem = draw(temperature, day, 'Temperature', 'chartTemperature');
+            graphSM = draw(solidiMoisture, day, 'Solid Moisture', 'chartSolidiMoisture');
         },
         error: function(data) {
             console.log(data);
         }
     });
-});
+}
+drawDefault();
+// update chart config and data
+function update(chart, data, labels) {
+    console.log('update');
+    chart.data.labels = labels;
+    chart.data.datasets[0].data = data;
+    chart.update();
+}
 
 // read date input and load chart of that date
-function readDate() {
+function chartUpdate() {
     var date = document.getElementById('date').value;
-    console.log(date);
+    // var test = "http://192.168.1.20/DATN/getDataByDate.php?date=" + date;
+    // console.log(test);
+    $.ajax({
+        url: "http://192.168.1.20/DATN/getDataByDate.php?date=" + date,
+        type: "GET",
+        success: function(data) {
+            var day = [];
+            var humidity = [];
+            var temperature = [];
+            var solidiMoisture = [];
+            for (var i in data) {
+                day.push(data[i].date);
+                temperature.push(data[i].temperature);
+                humidity.push(data[i].humidity);
+                solidiMoisture.push(data[i].solidiMoisture);
+            }
+            update(graphHum, humidity, day);
+            update(graphTem, temperature, day);
+            update(graphSM, solidiMoisture, day);
+            console.log("chartUpdate");
+
+        },
+        error: function(data) {
+            console.log(data);
+        }
+    });
 }
