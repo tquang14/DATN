@@ -19,7 +19,6 @@
     </script>
 
     <title>Admin</title>
-
     <!-- Custom fonts for this theme -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -28,7 +27,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
     <!-- Theme CSS -->
     <link href="css/freelancer.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body id="page-top">
@@ -158,18 +158,41 @@
                 </div>
                 <div class="divider-custom-line"></div>
             </div>
-
             <!-- Chart -->
             <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <br>
-                    <div id="chartContainer">
-                        Note: <br> ---biểu đồ---
+                <div class="col-lg-10 mx-auto">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active custom_aTag" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">humidity</a>
+                            <a class="nav-item nav-link custom_aTag" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">temperature</a>
+                            <a class="nav-item nav-link custom_aTag" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">solidi moisture</a>
+                        </div>
+                    </nav>
+                    <div class="col mt-2">
+                        <div class="float-right">
+                            <input type="date" id="date" name="date" onchange="readDate()">
+                        </div>
+                    </div>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="chartContainer">
+                                <canvas id="chartHumidity"></canvas>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="chartContainer">
+                                <canvas id="chartTemperature"></canvas>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="chartContainer">
+                                <canvas id="chartSolidiMoisture"></canvas>
+                            </div>
+                        </div>
                     </div>
                     <button class="btn btn-success btn-lg btn3d btn-xl" id="saveChart">Lưu hình ảnh biểu đồ</button>
                 </div>
             </div>
-
         </div>
     </section>
     <!-- ` Section -->
@@ -217,8 +240,8 @@
                         pháp hữu hiệu để cải tạo những bất cập nơi vườn trường, biến nơi đó thành “Khu vườn thông minh”.</p>
                 </div>
                 <div class="col-lg-4 mr-auto">
-                    <p class="lead">Với mục đích lớn nhất của dự án là lắp đặt một hệ thống tưới tiêu hiện đại có sử dụng công nghệ, giúp nông dân khi trồng các loại cây, hoa, rau sạch được thuận lợi hơn, đồng thời có thể chăm sóc chúng một cách tốt nhất, không
-                        mất quá nhiều sức lực mà cuối vụ vẫn có thể “bội thu"</p>
+                    <p class="lead">Với mục đích lớn nhất của dự án là lắp đặt một hệ thống tưới tiêu hiện đại có sử dụng công nghệ, giúp nông dân khi trồng các loại cây, hoa, rau sạch được thuận lợi hơn, đồng thời có thể chăm sóc chúng một cách tốt nhất, không mất quá
+                        nhiều sức lực mà cuối vụ vẫn có thể “bội thu"</p>
                 </div>
             </div>
 
@@ -259,17 +282,16 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
-
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
-
+    <!-- draw chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="js/drawChart.js"></script>
 </body>
 
 </html>

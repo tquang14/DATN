@@ -4,3 +4,27 @@
     width: 20px;
     display: inline-block;
 }
+
+.chartContainer {
+    width: auto;
+    height: auto;
+}
+
+.custom_aTag {
+    color: #2c3e50;
+    text-transform: uppercase;
+}
+
+#date {
+    background-color: #3CBC8D;
+    color: #2c3e50;
+    border: none;
+    border-bottom: 2px solid red;
+    border-radius: 4px;
+    /* outline: none; */
+}
+
+#date:hover {
+    background-color: #7bb1e7;
+    border: 1px solid #2c3e50;
+}
