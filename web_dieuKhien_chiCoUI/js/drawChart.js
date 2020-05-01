@@ -1,10 +1,12 @@
+// get the date and update to html
+curDate = new Date();
+document.getElementById('date').value = curDate.toFormattedString('yyyy-mm-dd');
 // some global var
 var graphHum;
 var graphTem;
 var graphSM;
 // draw chart to html
 function draw(data, labels, label, canvasID) {
-    console.log("draw");
     chartData = {
         labels: labels,
         datasets: [{
@@ -37,8 +39,9 @@ function draw(data, labels, label, canvasID) {
 
 // load default data when web first open and call draw to draw chart
 function drawDefault() {
+    var date = document.getElementById('date').value;
     $.ajax({
-        url: "http://192.168.1.20/DATN/getDataFormDatabase.php",
+        url: "http://192.168.1.20/DATN/getDataByDate.php?date=" + date,
         type: "GET",
         success: function(data) {
             var day = [];
@@ -63,7 +66,6 @@ function drawDefault() {
 drawDefault();
 // update chart config and data
 function update(chart, data, labels) {
-    console.log('update');
     chart.data.labels = labels;
     chart.data.datasets[0].data = data;
     chart.update();
@@ -91,11 +93,24 @@ function chartUpdate() {
             update(graphHum, humidity, day);
             update(graphTem, temperature, day);
             update(graphSM, solidiMoisture, day);
-            console.log("chartUpdate");
-
+            checkEmptyChart('chartHumAlert', 'chartHumidity', humidity);
+            checkEmptyChart('chartTemAlert', 'chartTemperature', temperature);
+            checkEmptyChart('chartSMAlert', 'chartSolidiMoisture', solidiMoisture);
         },
         error: function(data) {
             console.log(data);
         }
     });
+}
+
+function checkEmptyChart(divID, canvasID, data) {
+    div = document.getElementById(divID);
+    ctx = document.getElementById(canvasID);
+    if (data.length <= 0) {
+        div.style.display = 'block';
+        // ctx.style.display = 'none';
+    } else {
+        div.style.display = 'none';
+        // ctx.style.display = 'block';
+    }
 }

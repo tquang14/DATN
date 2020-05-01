@@ -163,34 +163,37 @@
                 <div class="col-lg-10 mx-auto">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active custom_aTag" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">humidity</a>
-                            <a class="nav-item nav-link custom_aTag" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">temperature</a>
-                            <a class="nav-item nav-link custom_aTag" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">solidi moisture</a>
+                            <a class="nav-item nav-link active custom_aTag" id="nav-home-tab" data-toggle="tab" href="#tabHum" role="tab" aria-controls="nav-home" aria-selected="true">humidity</a>
+                            <a class="nav-item nav-link custom_aTag" id="nav-profile-tab" data-toggle="tab" href="#tabTem" role="tab" aria-controls="nav-profile" aria-selected="false">temperature</a>
+                            <a class="nav-item nav-link custom_aTag" id="nav-contact-tab" data-toggle="tab" href="#tabSM" role="tab" aria-controls="nav-contact" aria-selected="false">solid moisture</a>
                         </div>
                     </nav>
                     <div class="col mt-2">
-                        <div class="float-right">
+                        <div class="float-right mb-1">
                             <input type="date" id="date" name="date" onchange="chartUpdate()">
                         </div>
                     </div>
                     <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="tab-pane fade show active" id="tabHum" role="tabpanel" aria-labelledby="nav-home-tab">
                             <div class="chartContainer">
-                                <canvas id="chartHumidity"></canvas>
+                                <div style="display: none;" id="chartHumAlert">ko có dữ liệu để hiển thị</div>
+                                <canvas id="chartHumidity" style="background-color: #cccccc;"></canvas>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="tab-pane fade" id="tabTem" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <div class="chartContainer">
-                                <canvas id="chartTemperature"></canvas>
+                                <div style="display: none;" id="chartTemAlert">ko có dữ liệu để hiển thị</div>
+                                <canvas id="chartTemperature" style="background-color: #cccccc;"></canvas>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <div class="tab-pane fade" id="tabSM" role="tabpanel" aria-labelledby="nav-contact-tab">
                             <div class="chartContainer">
-                                <canvas id="chartSolidiMoisture"></canvas>
+                                <div style="display: none;" id="chartSMAlert">ko có dữ liệu để hiển thị</div>
+                                <canvas id="chartSolidiMoisture" style="background-color: #cccccc;"></canvas>
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-success btn-lg btn3d btn-xl" id="saveChart">Lưu hình ảnh biểu đồ</button>
+                    <button class="btn btn-success btn-lg btn3d btn-xl" id="saveChart" onclick="saveChart()">Lưu hình ảnh biểu đồ</button>
                 </div>
             </div>
         </div>
@@ -289,9 +292,13 @@
     <script src="js/contact_me.js"></script>
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
+    <!-- custom date format in js -->
+    <script src="js/DateFormat.js"></script>
     <!-- draw chart -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="js/drawChart.js"></script>
+    <!-- save img -->
+    <script src="js/saveImg.js"></script>
 </body>
 
 </html>
