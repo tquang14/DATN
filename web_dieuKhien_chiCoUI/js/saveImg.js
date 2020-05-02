@@ -1,6 +1,6 @@
 // find current tab is show in html
 // return canvas id in this tab
-function findShowTab() {
+function findCurShowChart() {
     var tab1 = document.getElementById('tabHum');
     if (tab1.classList.contains('show'))
         return 'chartHumidity';
@@ -10,10 +10,12 @@ function findShowTab() {
     return 'chartSolidiMoisture';
 }
 
-//
+//save canvas as img using saveAs method in filesaver
 function saveChart() {
-    var c = document.getElementById(findShowTab());
-    var d = c.toDataURL("image/png");
-    var w = window.open('about:blank', 'image from canvas');
-    w.document.write("<img src='" + d + "' alt='from canvas'/>");
+    var chartID = findCurShowChart();
+    var canvas = document.getElementById(chartID);
+    var date = document.getElementById('date').value;
+    canvas.toBlob(function(blob) {
+        saveAs(blob, chartID + "_" + date + ".png");
+    });
 }

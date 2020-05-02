@@ -57,6 +57,9 @@ function drawDefault() {
             graphHum = draw(humidity, day, 'Humidity', 'chartHumidity');
             graphTem = draw(temperature, day, 'Temperature', 'chartTemperature');
             graphSM = draw(solidiMoisture, day, 'Solid Moisture', 'chartSolidiMoisture');
+            checkEmptyChart('chartHumAlert', 'chartHumidity', humidity);
+            checkEmptyChart('chartTemAlert', 'chartTemperature', temperature);
+            checkEmptyChart('chartSMAlert', 'chartSolidiMoisture', solidiMoisture);
         },
         error: function(data) {
             console.log(data);

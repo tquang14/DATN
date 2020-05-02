@@ -1,4 +1,4 @@
-// prototype a method to format date time
+// prototype some method to format date time
 Date.prototype.toFormattedString = function(f) {
     var nm = this.getMonthName();
     var nd = this.getDayName();
