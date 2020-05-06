@@ -28,6 +28,7 @@
     <!-- Theme CSS -->
     <link href="css/freelancer.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/switchCustom.css">
 
 </head>
 
@@ -170,29 +171,59 @@
                     </nav>
                     <div class="col mt-2">
                         <div class="float-right mb-1">
-                            <input type="date" id="date" name="date" onchange="chartUpdate()">
+                            <input type="date" id="date" name="date" onchange="chartUpdate()" style="width: 200px;">
+                        </div>
+                        <div class="mb-1 float-left">
+                            <span>Xem theo tháng: </span>
+                            <!-- Rounded switch -->
+                            <label class="switch">
+                                <input type="checkbox" id="viewByMonth" onclick="switchViewMode()">
+                                <span class="slider round"></span>
+                            </label>
                         </div>
                     </div>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="tabHum" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <div class="chartContainer">
-                                <div style="display: none;" id="chartHumAlert">ko có dữ liệu để hiển thị</div>
+                            <div class="chartContainer" id="chartHum">
+                                <div style="display: none;" id="chartHumAlert">
+                                    <h3 style="color: saddlebrown;">
+                                        ***Ko có dữ liệu để hiển thị***
+                                    </h3>
+                                </div>
                                 <canvas id="chartHumidity" style="background-color: #cccccc;"></canvas>
+                                <div class="float-right">
+                                    <span id="avgHum">Trung Bình: NULL</span>
+                                </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="tabTem" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <div class="chartContainer">
-                                <div style="display: none;" id="chartTemAlert">ko có dữ liệu để hiển thị</div>
+                            <div class="chartContainer" id="chartTem">
+                                <div style="display: none;" id="chartTemAlert">
+                                    <h3 style="color: saddlebrown;">
+                                        ***Ko có dữ liệu để hiển thị***
+                                    </h3>
+                                </div>
                                 <canvas id="chartTemperature" style="background-color: #cccccc;"></canvas>
+                                <div class="float-right">
+                                    <span id="avgTem">Trung Bình: NULL</span>
+                                </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="tabSM" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            <div class="chartContainer">
-                                <div style="display: none;" id="chartSMAlert">ko có dữ liệu để hiển thị</div>
+                            <div class="chartContainer" id="chartSM">
+                                <div style="display: none;" id="chartSMAlert">
+                                    <h3 style="color: saddlebrown;">
+                                        ***Ko có dữ liệu để hiển thị***
+                                    </h3>
+                                </div>
                                 <canvas id="chartSolidiMoisture" style="background-color: #cccccc;"></canvas>
+                                <div class="float-right">
+                                    <span id="avgSM">Trung Bình: NULL</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <br>
                     <button class="btn btn-success btn-lg btn3d btn-xl" id="saveChart" onclick="saveChart()">Lưu hình ảnh biểu đồ</button>
                 </div>
             </div>
@@ -298,8 +329,12 @@
     <script src="js/drawChart.js"></script>
     <!-- filesaver cdn -->
     <script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <!-- convert to img -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <!-- save img -->
     <script src="js/saveImg.js"></script>
+    <!-- interact with firebase -->
+    <script src="js/control.js"></script>
 </body>
 
 </html>

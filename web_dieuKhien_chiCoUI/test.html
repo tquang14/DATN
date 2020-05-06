@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="css/switchCustom.css">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
 
 <body>
-    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
-Your browser does not support the canvas element.
-</canvas>
-    <button onclick="downloadImage()">Save image</button>
+    <div id="my-node">
+        You will get a image downloaded.
+    </div>
 
-    <script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <button id="foo">download img</button>
+
     <script>
-        var canvas = document.getElementById("myCanvas");
-        var ctx = canvas.getContext("2d");
-        ctx.font = "30px Arial";
-        ctx.fillText("Hello World", 10, 50);
-
-        function downloadImage() {
-            var canvas = document.getElementById("myCanvas");
-            canvas.toBlob(function(blob) {
-                saveAs(blob, "canvas_images.png");
-            });
+        var node = document.getElementById('my-node');
+        var btn = document.getElementById('foo');
+        btn.onclick = function() {
+            node.innerHTML = "I'm an image now."
+            domtoimage.toBlob(document.getElementById('my-node'))
+                .then(function(blob) {
+                    window.saveAs(blob, 'my-node.png');
+                });
         }
     </script>
 </body>

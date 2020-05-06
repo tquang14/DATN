@@ -1,6 +1,7 @@
 // get the date and update to html
 curDate = new Date();
-document.getElementById('date').value = curDate.toFormattedString('yyyy-mm-dd');
+datePicker = document.getElementById('date');
+datePicker.value = curDate.toFormattedString('yyyy-mm-dd');
 // some global var
 var graphHum;
 var graphTem;
@@ -60,6 +61,10 @@ function drawDefault() {
             checkEmptyChart('chartHumAlert', 'chartHumidity', humidity);
             checkEmptyChart('chartTemAlert', 'chartTemperature', temperature);
             checkEmptyChart('chartSMAlert', 'chartSolidiMoisture', solidiMoisture);
+            console.log("test:" + avgCalculate(humidity));
+            document.getElementById('avgHum').innerHTML = "Trung Bình:" + avgCalculate(humidity);
+            document.getElementById('avgTem').innerHTML = "Trung Bình:" + avgCalculate(temperature);
+            document.getElementById('avgSM').innerHTML = "Trung Bình:" + avgCalculate(solidiMoisture);
         },
         error: function(data) {
             console.log(data);
@@ -78,32 +83,66 @@ function update(chart, data, labels) {
 function chartUpdate() {
     var date = document.getElementById('date').value;
     // var test = "http://192.168.1.20/DATN/getDataByDate.php?date=" + date;
-    // console.log(test);
-    $.ajax({
-        url: "http://192.168.1.20/DATN/getDataByDate.php?date=" + date,
-        type: "GET",
-        success: function(data) {
-            var day = [];
-            var humidity = [];
-            var temperature = [];
-            var solidiMoisture = [];
-            for (var i in data) {
-                day.push(data[i].date);
-                temperature.push(data[i].temperature);
-                humidity.push(data[i].humidity);
-                solidiMoisture.push(data[i].solidiMoisture);
+    if (datePicker.type == "date") {
+        $.ajax({
+            url: "http://192.168.1.20/DATN/getDataByDate.php?date=" + date,
+            type: "GET",
+            success: function(data) {
+                var day = [];
+                var humidity = [];
+                var temperature = [];
+                var solidiMoisture = [];
+                for (var i in data) {
+                    day.push(data[i].date);
+                    temperature.push(data[i].temperature);
+                    humidity.push(data[i].humidity);
+                    solidiMoisture.push(data[i].solidiMoisture);
+                }
+                update(graphHum, humidity, day);
+                update(graphTem, temperature, day);
+                update(graphSM, solidiMoisture, day);
+                checkEmptyChart('chartHumAlert', 'chartHumidity', humidity);
+                checkEmptyChart('chartTemAlert', 'chartTemperature', temperature);
+                checkEmptyChart('chartSMAlert', 'chartSolidiMoisture', solidiMoisture);
+                document.getElementById('avgHum').innerHTML = "Trung Bình:" + avgCalculate(humidity);
+                document.getElementById('avgTem').innerHTML = "Trung Bình:" + avgCalculate(temperature);
+                document.getElementById('avgSM').innerHTML = "Trung Bình:" + avgCalculate(solidiMoisture);
+            },
+            error: function(data) {
+                console.log(data);
             }
-            update(graphHum, humidity, day);
-            update(graphTem, temperature, day);
-            update(graphSM, solidiMoisture, day);
-            checkEmptyChart('chartHumAlert', 'chartHumidity', humidity);
-            checkEmptyChart('chartTemAlert', 'chartTemperature', temperature);
-            checkEmptyChart('chartSMAlert', 'chartSolidiMoisture', solidiMoisture);
-        },
-        error: function(data) {
-            console.log(data);
-        }
-    });
+        });
+    } else {
+        $.ajax({
+            url: "http://192.168.1.20/DATN/getDataByDate.php?month=" + date,
+            type: "GET",
+            success: function(data) {
+                var day = [];
+                var humidity = [];
+                var temperature = [];
+                var solidiMoisture = [];
+                for (var i in data) {
+                    day.push(data[i].date);
+                    temperature.push(data[i].temperature);
+                    humidity.push(data[i].humidity);
+                    solidiMoisture.push(data[i].solidiMoisture);
+                }
+                update(graphHum, humidity, day);
+                update(graphTem, temperature, day);
+                update(graphSM, solidiMoisture, day);
+                checkEmptyChart('chartHumAlert', 'chartHumidity', humidity);
+                checkEmptyChart('chartTemAlert', 'chartTemperature', temperature);
+                checkEmptyChart('chartSMAlert', 'chartSolidiMoisture', solidiMoisture);
+                document.getElementById('avgHum').innerHTML = "Trung Bình:" + avgCalculate(humidity);
+                document.getElementById('avgTem').innerHTML = "Trung Bình:" + avgCalculate(temperature);
+                document.getElementById('avgSM').innerHTML = "Trung Bình:" + avgCalculate(solidiMoisture);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    }
+
 }
 
 function checkEmptyChart(divID, canvasID, data) {
@@ -116,4 +155,26 @@ function checkEmptyChart(divID, canvasID, data) {
         div.style.display = 'none';
         // ctx.style.display = 'block';
     }
+}
+
+function switchViewMode() {
+    monthSW = document.getElementById('viewByMonth');
+    if (monthSW.checked) {
+        datePicker.type = "month";
+        datePicker.value = curDate.toFormattedString('yyyy-mm');
+    } else {
+        datePicker.type = "date";
+        datePicker.value = curDate.toFormattedString('yyyy-mm-dd');
+    }
+    chartUpdate();
+}
+
+function avgCalculate(data) {
+    if (data.length == 0)
+        return "NULL";
+    var avg = 0;
+    for (var i in data) {
+        avg += parseFloat(data[i]);
+    }
+    return Math.round(((avg / data.length) + Number.EPSILON) * 100) / 100;;
 }
