@@ -6,7 +6,7 @@
 }
 
 .tempIcon {
-    background: url('/img/celcius.svg');
+    background: url('../img/celcius.svg');
     width: 65px;
     height: 65px;
 }
@@ -16,21 +16,21 @@
 }
 
 #icon-humidity {
-    background: url('/img/humidityIcon.svg');
+    background: url('../img/humidityIcon.svg');
     width: 20px;
     height: 20px;
     display: inline-block;
 }
 
 #icon-SolidMoisture {
-    background: url('/img/SolidMoistureIcon.svg');
+    background: url('../img/SolidMoistureIcon.svg');
     width: 20px;
     height: 20px;
     display: inline-block;
 }
 
 #icon-rain {
-    background: url('/img/rainIcon.svg');
+    background: url('../img/rainIcon.svg');
     width: 20px;
     height: 20px;
     display: inline-block;
