@@ -183,6 +183,7 @@
 
 .card-custom {
     padding: 0.2rem 1.25rem;
+    min-width: fit-content;
 }
 
 .device-img {
