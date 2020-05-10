@@ -27,6 +27,28 @@
             $mysqli->close();
             print json_encode($data);
         } 
+        else if (!empty($_GET["month"])) {
+            $date = $_GET["month"];
+            $year = substr($date, 0, 4);
+            $month = substr($date, 5, 2);
+            // connect to database
+            $mysqli = new mysqli(server, Username, Password, DB_name);
+            if (!$mysqli) {
+                die("connection failed:" . $mysqli->error);
+            }
+            $query = "SELECT * FROM sensorval WHERE EXTRACT(year FROM date) = " ."'". $year 
+            ."' AND EXTRACT(month FROM date) =" ."'". $month ."'";
+            $result = $mysqli->query($query);
+            // get data into array by loop through result
+            $data = array();
+            foreach ($result as $row) {
+                $data[] = $row;
+            }
+
+            $result->close();
+            $mysqli->close();
+            print json_encode($data);
+        } 
         else {
             echo "date null";
         }
