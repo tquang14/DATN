@@ -1,4 +1,5 @@
 // get the date and update to html
+const ip = "192.168.1.20";
 curDate = new Date();
 datePicker = document.getElementById('date');
 datePicker.value = curDate.toFormattedString('yyyy-mm-dd');
@@ -42,7 +43,7 @@ function draw(data, labels, label, canvasID) {
 function drawDefault() {
     var date = document.getElementById('date').value;
     $.ajax({
-        url: "http://192.168.1.20/DATN/getDataByDate.php?date=" + date,
+        url: "http://" + ip + "/DATN/getDataByDate.php?date=" + date,
         type: "GET",
         success: function(data) {
             var day = [];
@@ -61,13 +62,12 @@ function drawDefault() {
             checkEmptyChart('chartHumAlert', 'chartHumidity', humidity);
             checkEmptyChart('chartTemAlert', 'chartTemperature', temperature);
             checkEmptyChart('chartSMAlert', 'chartSolidiMoisture', solidiMoisture);
-            console.log("test:" + avgCalculate(humidity));
             document.getElementById('avgHum').innerHTML = "Trung Bình:" + avgCalculate(humidity);
             document.getElementById('avgTem').innerHTML = "Trung Bình:" + avgCalculate(temperature);
             document.getElementById('avgSM').innerHTML = "Trung Bình:" + avgCalculate(solidiMoisture);
         },
         error: function(data) {
-            console.log(data);
+            alert("ko co ket noi toi database");
         }
     });
 }
@@ -85,7 +85,7 @@ function chartUpdate() {
     // var test = "http://192.168.1.20/DATN/getDataByDate.php?date=" + date;
     if (datePicker.type == "date") {
         $.ajax({
-            url: "http://192.168.1.20/DATN/getDataByDate.php?date=" + date,
+            url: "http://" + ip + "/DATN/getDataByDate.php?date=" + date,
             type: "GET",
             success: function(data) {
                 var day = [];
@@ -109,12 +109,12 @@ function chartUpdate() {
                 document.getElementById('avgSM').innerHTML = "Trung Bình:" + avgCalculate(solidiMoisture);
             },
             error: function(data) {
-                console.log(data);
+                alert("ko co ket noi toi database");
             }
         });
     } else {
         $.ajax({
-            url: "http://192.168.1.20/DATN/getDataByDate.php?month=" + date,
+            url: "http://" + ip + "/DATN/getDataByDate.php?month=" + date,
             type: "GET",
             success: function(data) {
                 var day = [];

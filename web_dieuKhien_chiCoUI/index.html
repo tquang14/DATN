@@ -19,6 +19,7 @@
     </script>
 
     <title>Admin</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Custom fonts for this theme -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -29,6 +30,7 @@
     <link href="css/freelancer.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/switchCustom.css">
+
 
 </head>
 
@@ -82,27 +84,34 @@
                                 <img id="icon_cay" src="img/portfolio/icon_caChua.png" alt="" height="100px" style="margin-bottom: 5px">
                             </div>
 
-                            <div id="temperature" class="col text-center">
-                                30.04 <i id="icon-thermometer" class="wi wi-thermometer"></i>
+                            <div id="temperature" class="col" title="Nhiệt độ">
+                                30.04
+                                <span id="icon-thermometer" class="wi tempIcon"></span>
                             </div>
                         </div>
                         <!-- weather body header -->
                         <div class="weather-body">
                             <div class="row">
-                                <div class="humidity col-6 text-center">
-                                    <i class="wi wi-raindrop"></i><span> Humidity</span>
+                                <div class="humidity col-4">
+                                    <span id="icon-humidity" class="wi"></span><span> Độ ẩm không khí</span>
                                 </div>
-                                <div class="visibility col-6 text-center">
-                                    <i class="fas fa-layer-group"></i><span> Soil Moisture</span>
+                                <div class="visibility col-4">
+                                    <span id="icon-SolidMoisture" class="wi"></span><span> Độ ẩm đất</span>
+                                </div>
+                                <div class="visibility col-4">
+                                    <span id="icon-rain" class="wi"></span><span> Mưa</span>
                                 </div>
                             </div>
                             <!-- weather body data -->
                             <div class="row">
-                                <div id="humidity" class="humidity-data col-6 text-center">
-                                    01.05
+                                <div id="humidity" class="humidity-data col-4" title="Độ ẩm không khí">
+                                    01.05 <span>%</span>
                                 </div>
-                                <div id="soil_moisture" class="degree-data col-6 text-center">
-                                    02.09
+                                <div id="soil_moisture" class="degree-data col-4" title="Độ ẩm đất">
+                                    02.09 <span>%</span>
+                                </div>
+                                <div id="rain" class="degree-data col-4" title="Thời tiết" style="margin: auto;">
+                                    Không có mưa
                                 </div>
                             </div>
                         </div>
@@ -128,16 +137,80 @@
                 <div class="divider-custom-line"></div>
             </div>
         </div>
-        <div class="row" id="control">
-            <div class="col">
+        <div class="row justify-content-center" id="control">
+            <div class="col-md-6">
                 <!-- <h2 id="manual_title" style="color: black;">Manual</h2> -->
                 <div class="relay">
-                    <button type="button" class="btn btn-success btn-lg btn3d" onclick="pump()" id="relay1" style="margin: 10px;">Bơm</button>
+                    <!-- <button type="button" class="btn btn-success btn-lg btn3d" onclick="pump()" id="relay1" style="margin: 10px;">Bơm</button>
                     <button type="button" class="btn btn-success btn-lg btn3d" onclick="misting()" id="relay2" style="margin: 10px;">Phun sương</button>
-                    <button type="button" class="btn btn-success btn-lg btn3d" onclick="light()" id="relay3" style="margin: 10px;">Đèn</button> <br>
+                    <button type="button" class="btn btn-success btn-lg btn3d" onclick="light()" id="relay3" style="margin: 10px;">Đèn</button>  -->
+                    <!-- card btn -->
+                    <div class="card-deck">
+                        <div class="card text-white bg-dark">
+                            <div class="card-body card-custom">
+                                <div class="card-container">
+                                    <div class="row cardSwitch">
+                                        <label class="rocker">
+                                            <input type="checkbox" onchange="pump()" id="pumpSwitch">
+                                            <span class="switch-left">On</span>
+                                            <span class="switch-right">Off</span>
+                                        </label>
+                                    </div>
+                                    <div class="row cardRow">
+                                        <img class="col device-img" src="img/pump.svg" alt="demo" id="pumpIcon">
+                                        <div class="col">
+                                            <h5 class="text-left cardText">Máy Bơm</h5>
+                                            <p class="text-left cardText" id="pumpText">Hoạt động từ: <br> --thời gian-- </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-dark">
+                            <div class="card-body card-custom">
+                                <div class="card-container">
+                                    <div class="row cardSwitch">
+                                        <label class="rocker">
+                                            <input type="checkbox" onchange="light()" id="lightSwitch">
+                                            <span class="switch-left">On</span>
+                                            <span class="switch-right">Off</span>
+                                        </label>
+                                    </div>
+                                    <div class="row cardRow">
+                                        <img class="col device-img" src="img/lightbulb.svg" alt="demo" id="lightIcon">
+                                        <div class="col">
+                                            <h5 class="text-left cardText">Bóng đèn</h5>
+                                            <p class="text-left cardText" id="lightText">Hoạt động từ: <br> --thời gian-- </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-dark">
+                            <div class="card-body card-custom">
+                                <div class="card-container">
+                                    <div class="row cardSwitch">
+                                        <label class="rocker">
+                                            <input type="checkbox" onchange="misting()" id="mistingSwitch">
+                                            <span class="switch-left">On</span>
+                                            <span class="switch-right">Off</span>
+                                        </label>
+                                    </div>
+                                    <div class="row cardRow">
+                                        <img class="col device-img" src="img/mist.svg" alt="demo" id="mistingIcon">
+                                        <div class="col">
+                                            <h5 class="text-left cardText">Phun Sương</h5>
+                                            <p class="text-left cardText" id="mistingText">Hoạt động từ: <br> --thời gian-- </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- note -->
                     <!-- trong thay đổi cây trồng sẽ popup 1 cửa sổ cho phép đổi loại cây trong vườn, điều chỉnh các thông số tự động bật tắt thiết bị -->
-                    <button type="button" class="btn btn-success btn-lg btn3d" onclick="treeChange()" id="relay3" style="margin: 10px;">Thay đổi loại cây trồng</button>
+                    <br>
+                    <button type="button" class="btn btn-info btn-lg btn3d" onclick="treeChange()" id="relay3" style="margin: 10px;">Thay đổi loại cây trồng</button>
                 </div>
             </div>
         </div>
@@ -164,9 +237,9 @@
                 <div class="col-lg-10 mx-auto">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active custom_aTag" id="nav-home-tab" data-toggle="tab" href="#tabHum" role="tab" aria-controls="nav-home" aria-selected="true">humidity</a>
-                            <a class="nav-item nav-link custom_aTag" id="nav-profile-tab" data-toggle="tab" href="#tabTem" role="tab" aria-controls="nav-profile" aria-selected="false">temperature</a>
-                            <a class="nav-item nav-link custom_aTag" id="nav-contact-tab" data-toggle="tab" href="#tabSM" role="tab" aria-controls="nav-contact" aria-selected="false">solid moisture</a>
+                            <a class="nav-item nav-link active custom_aTag" id="nav-home-tab" data-toggle="tab" href="#tabHum" role="tab" aria-controls="nav-home" aria-selected="true">Độ ẩm không khí</a>
+                            <a class="nav-item nav-link custom_aTag" id="nav-profile-tab" data-toggle="tab" href="#tabTem" role="tab" aria-controls="nav-profile" aria-selected="false">Nhiệt Độ</a>
+                            <a class="nav-item nav-link custom_aTag" id="nav-contact-tab" data-toggle="tab" href="#tabSM" role="tab" aria-controls="nav-contact" aria-selected="false">Độ ẩm đất</a>
                         </div>
                     </nav>
                     <div class="col mt-2">
@@ -311,17 +384,13 @@
     </div>
 
     <!-- Portfolio Modals -->
-
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
     <!-- Custom scripts for this template -->
-    <script src="js/freelancer.min.js"></script>
+    <script src="js/lib/freelancer.min.js"></script>
     <!-- custom date format in js -->
     <script src="js/DateFormat.js"></script>
     <!-- draw chart -->
@@ -333,8 +402,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <!-- save img -->
     <script src="js/saveImg.js"></script>
+    <!-- firebase cdn -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
+    <!-- firebase config -->
+    <script src="js/firebase/firebaseInit.js"></script>
     <!-- interact with firebase -->
-    <script src="js/control.js"></script>
+    <script src="js/firebase/control.js"></script>
+    <script src="js/firebase/getCurState.js"></script>
 </body>
 
 </html>
