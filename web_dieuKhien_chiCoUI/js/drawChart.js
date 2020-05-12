@@ -117,15 +117,45 @@ function chartUpdate() {
             url: "http://" + ip + "/DATN/getDataByDate.php?month=" + date,
             type: "GET",
             success: function(data) {
+                // store value to draw chart
                 var day = [];
                 var humidity = [];
                 var temperature = [];
                 var solidiMoisture = [];
-                for (var i in data) {
-                    day.push(data[i].date);
-                    temperature.push(data[i].temperature);
-                    humidity.push(data[i].humidity);
-                    solidiMoisture.push(data[i].solidiMoisture);
+                // calculate avg on each day
+                if (data.length > 0) {
+                    var cnt = 1; // count number of value on each day
+                    // store sum of value to calculate avg on each day
+                    var sumHumidity = parseFloat(data[0].humidity);
+                    var sumTemperature = parseFloat(data[0].temperature);
+                    var sumSolidiMoisture = parseFloat(data[0].solidiMoisture);
+                    day.push(data[0].date.substring(0, data[0].date.indexOf(" ")));
+                    var tmp;
+                    var tmp1;
+                    for (let i = 1; i < data.length; i++) {
+                        tmp = data[i].date.substring(0, data[i].date.indexOf(" "));
+                        tmp1 = data[i - 1].date.substring(0, data[i - 1].date.indexOf(" "));
+                        console.log(tmp + "--" + tmp1);
+                        // compare date but not time
+                        if (tmp == tmp1) {
+                            cnt++;
+                            sumHumidity += parseFloat(data[i].humidity);
+                            sumTemperature += parseFloat(data[i].temperature);
+                            sumSolidiMoisture += parseFloat(data[i].solidiMoisture);
+                        } else {
+                            humidity.push(sumHumidity / cnt);
+                            temperature.push(sumTemperature / cnt);
+                            solidiMoisture.push(sumSolidiMoisture / cnt);
+                            day.push(tmp);
+                            sumHumidity = parseFloat(data[i].humidity);
+                            sumTemperature = parseFloat(data[i].temperature);
+                            sumSolidiMoisture = parseFloat(data[i].solidiMoisture);
+                            cnt = 1;
+                        }
+                    }
+                    humidity.push(sumHumidity / cnt);
+                    temperature.push(sumTemperature / cnt);
+                    solidiMoisture.push(sumSolidiMoisture / cnt);
                 }
                 update(graphHum, humidity, day);
                 update(graphTem, temperature, day);
@@ -133,6 +163,7 @@ function chartUpdate() {
                 checkEmptyChart('chartHumAlert', 'chartHumidity', humidity);
                 checkEmptyChart('chartTemAlert', 'chartTemperature', temperature);
                 checkEmptyChart('chartSMAlert', 'chartSolidiMoisture', solidiMoisture);
+                // display avg of drawn values
                 document.getElementById('avgHum').innerHTML = "Trung Bình:" + avgCalculate(humidity);
                 document.getElementById('avgTem').innerHTML = "Trung Bình:" + avgCalculate(temperature);
                 document.getElementById('avgSM').innerHTML = "Trung Bình:" + avgCalculate(solidiMoisture);
