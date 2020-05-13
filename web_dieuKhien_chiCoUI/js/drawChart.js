@@ -1,5 +1,6 @@
 // get the date and update to html
-const ip = "192.168.1.20";
+const ip = "192.168.1.18";
+const port = "4000"; //default is 8000
 curDate = new Date();
 datePicker = document.getElementById('date');
 datePicker.value = curDate.toFormattedString('yyyy-mm-dd');
@@ -43,7 +44,7 @@ function draw(data, labels, label, canvasID) {
 function drawDefault() {
     var date = document.getElementById('date').value;
     $.ajax({
-        url: "http://" + ip + "/DATN/getDataByDate.php?date=" + date,
+        url: "http://" + ip + ":" + port + "/DATN/getDataByDate.php?date=" + date,
         type: "GET",
         success: function(data) {
             var day = [];
@@ -85,7 +86,7 @@ function chartUpdate() {
     // var test = "http://192.168.1.20/DATN/getDataByDate.php?date=" + date;
     if (datePicker.type == "date") {
         $.ajax({
-            url: "http://" + ip + "/DATN/getDataByDate.php?date=" + date,
+            url: "http://" + ip + ":" + port + "/DATN/getDataByDate.php?date=" + date,
             type: "GET",
             success: function(data) {
                 var day = [];
@@ -114,7 +115,7 @@ function chartUpdate() {
         });
     } else {
         $.ajax({
-            url: "http://" + ip + "/DATN/getDataByDate.php?month=" + date,
+            url: "http://" + ip + ":" + port + "/DATN/getDataByDate.php?month=" + date,
             type: "GET",
             success: function(data) {
                 // store value to draw chart
@@ -135,7 +136,7 @@ function chartUpdate() {
                     for (let i = 1; i < data.length; i++) {
                         tmp = data[i].date.substring(0, data[i].date.indexOf(" "));
                         tmp1 = data[i - 1].date.substring(0, data[i - 1].date.indexOf(" "));
-                        console.log(tmp + "--" + tmp1);
+                        // console.log(tmp + "--" + tmp1);
                         // compare date but not time
                         if (tmp == tmp1) {
                             cnt++;
