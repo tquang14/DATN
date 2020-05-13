@@ -140,21 +140,21 @@
         <div class="row justify-content-center" id="control">
             <div class="col-md-6">
                 <!-- <h2 id="manual_title" style="color: black;">Manual</h2> -->
-                <div class="relay">
+                <div class="deviceSW-container">
                     <!-- <button type="button" class="btn btn-success btn-lg btn3d" onclick="pump()" id="relay1" style="margin: 10px;">Bơm</button>
                     <button type="button" class="btn btn-success btn-lg btn3d" onclick="misting()" id="relay2" style="margin: 10px;">Phun sương</button>
                     <button type="button" class="btn btn-success btn-lg btn3d" onclick="light()" id="relay3" style="margin: 10px;">Đèn</button>  -->
                     <!-- card btn -->
-                    <div class="card-deck">
+                    <div class="card-deck pb-2">
                         <div class="card text-white bg-dark">
                             <div class="card-body card-custom">
                                 <div class="card-container">
                                     <div class="row cardSwitch">
                                         <label class="rocker">
-                                            <input type="checkbox" onchange="pump()" id="pumpSwitch">
-                                            <span class="switch-left">On</span>
-                                            <span class="switch-right">Off</span>
-                                        </label>
+                                                <input type="checkbox" onchange="pump()" id="pumpSwitch">
+                                                <span class="switch-left">On</span>
+                                                <span class="switch-right">Off</span>
+                                            </label>
                                     </div>
                                     <div class="row cardRow">
                                         <img class="col device-img" src="img/pump.svg" alt="demo" id="pumpIcon">
@@ -171,10 +171,10 @@
                                 <div class="card-container">
                                     <div class="row cardSwitch">
                                         <label class="rocker">
-                                            <input type="checkbox" onchange="light()" id="lightSwitch">
-                                            <span class="switch-left">On</span>
-                                            <span class="switch-right">Off</span>
-                                        </label>
+                                                <input type="checkbox" onchange="light()" id="lightSwitch">
+                                                <span class="switch-left">On</span>
+                                                <span class="switch-right">Off</span>
+                                            </label>
                                     </div>
                                     <div class="row cardRow">
                                         <img class="col device-img" src="img/lightbulb.svg" alt="demo" id="lightIcon">
@@ -186,15 +186,17 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="card-deck pt-2">
                         <div class="card text-white bg-dark">
                             <div class="card-body card-custom">
                                 <div class="card-container">
                                     <div class="row cardSwitch">
                                         <label class="rocker">
-                                            <input type="checkbox" onchange="misting()" id="mistingSwitch">
-                                            <span class="switch-left">On</span>
-                                            <span class="switch-right">Off</span>
-                                        </label>
+                                                <input type="checkbox" onchange="misting()" id="mistingSwitch">
+                                                <span class="switch-left">On</span>
+                                                <span class="switch-right">Off</span>
+                                            </label>
                                     </div>
                                     <div class="row cardRow">
                                         <img class="col device-img" src="img/mist.svg" alt="demo" id="mistingIcon">
@@ -206,7 +208,28 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card text-white bg-dark">
+                            <div class="card-body card-custom">
+                                <div class="card-container">
+                                    <div class="row cardSwitch">
+                                        <label class="rocker">
+                                                <input type="checkbox" onchange="" id="">
+                                                <span class="switch-left">On</span>
+                                                <span class="switch-right">Off</span>
+                                            </label>
+                                    </div>
+                                    <div class="row cardRow">
+                                        <img class="col device-img" src="img/mist.svg" alt="demo" id="">
+                                        <div class="col" style="min-width: 100px;">
+                                            <h5 class="text-left cardText">Mái che</h5>
+                                            <p class="text-left cardText" id="">Hoạt động từ: <br> --thời gian-- </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <!-- note -->
                     <!-- trong thay đổi cây trồng sẽ popup 1 cửa sổ cho phép đổi loại cây trong vườn, điều chỉnh các thông số tự động bật tắt thiết bị -->
                     <br>
