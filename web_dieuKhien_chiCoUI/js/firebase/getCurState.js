@@ -1,6 +1,6 @@
 // get device current state
-const deviceRefs = ['bom', 'den', 'phunsuong'];
-const IDs = ['pump', 'light', 'misting'];
+const deviceRefs = ['bom', 'den', 'phunsuong', 'maiChe'];
+const IDs = ['pump', 'light', 'misting', 'roof'];
 
 for (let index = 0; index < deviceRefs.length; index++) {
     const deviceRef = deviceRefs[index];

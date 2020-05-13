@@ -21,6 +21,17 @@ function misting() {
     }
 }
 
+function roof() {
+    var roofSwitch = document.getElementById('roofSwitch');
+    if (roofSwitch.checked) {
+        //gui len firebase
+        firebase.database().ref('maiChe/state').set('on');
+    } else {
+        //gui len firebase
+        firebase.database().ref('maiChe/state').set('off');
+    }
+}
+
 function light() {
     var lightSwitch = document.getElementById('lightSwitch');
     if (lightSwitch.checked) {
