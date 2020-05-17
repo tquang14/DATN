@@ -15,7 +15,7 @@
             if (!$mysqli) {
                 die("connection failed:" . $mysqli->error);
             }
-            $query = "SELECT * FROM sensorval WHERE date BETWEEN" . "'" . $date . "'" . " AND " . "'" . $date . " 23:59:59" . "'";
+            $query = "SELECT * FROM sensorval WHERE date BETWEEN" . "'" . $date . "'" . " AND " . "'" . $date . " 23:59:59" . "' ORDER BY DATE";
             $result = $mysqli->query($query);
             // get data into array by loop through result
             $data = array();
@@ -37,7 +37,7 @@
                 die("connection failed:" . $mysqli->error);
             }
             $query = "SELECT * FROM sensorval WHERE EXTRACT(year FROM date) = " ."'". $year 
-            ."' AND EXTRACT(month FROM date) =" ."'". $month ."'";
+            ."' AND EXTRACT(month FROM date) =" ."'". $month ."' ORDER BY DATE";
             $result = $mysqli->query($query);
             // get data into array by loop through result
             $data = array();
