@@ -363,3 +363,13 @@ input:checked:focus+.switch-left+.switch-right {
     max-width: 700px;
     margin: auto;
 }
+
+.page-section {
+    padding: 1rem 0 4rem 0;
+}
+
+#treeDetail {
+    display: inline-block;
+    color: darkgray;
+    font-size: 12px;
+}

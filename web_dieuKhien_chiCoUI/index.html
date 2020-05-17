@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+    <link rel="shortcut icon" href="">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -46,7 +46,7 @@
     </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item ">
+                    <li class="nav-item">
                         <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="#portfolio">Điều Khiển</a>
                     </li>
                     <li class="nav-item">
@@ -74,7 +74,7 @@
         <!-- weather section  -->
         <div class="container-fluid">
             <div class="row">
-                <div id="" class="col-8 mx-auto weather">
+                <div id="" class="col-10 mx-auto weather">
                     <!-- weather header section -->
                     <div class="weather-head">
                         <h1 id="location" class="text-center display-4">Thông số hiện tại trong vườn</h1>
@@ -139,12 +139,7 @@
         </div>
         <div class="row justify-content-center" id="control">
             <div class="col-md-6">
-                <!-- <h2 id="manual_title" style="color: black;">Manual</h2> -->
                 <div class="deviceSW-container">
-                    <!-- <button type="button" class="btn btn-success btn-lg btn3d" onclick="pump()" id="relay1" style="margin: 10px;">Bơm</button>
-                    <button type="button" class="btn btn-success btn-lg btn3d" onclick="misting()" id="relay2" style="margin: 10px;">Phun sương</button>
-                    <button type="button" class="btn btn-success btn-lg btn3d" onclick="light()" id="relay3" style="margin: 10px;">Đèn</button>  -->
-                    <!-- card btn -->
                     <div class="card-deck pb-2">
                         <div class="card text-white bg-dark">
                             <div class="card-body card-custom">
@@ -233,7 +228,57 @@
                     <!-- note -->
                     <!-- trong thay đổi cây trồng sẽ popup 1 cửa sổ cho phép đổi loại cây trong vườn, điều chỉnh các thông số tự động bật tắt thiết bị -->
                     <br>
-                    <button type="button" class="btn btn-info btn-lg btn3d" onclick="treeChange()" id="relay3" style="margin: 10px;">Thay đổi loại cây trồng</button>
+                    <button type="button" class="btn btn-info btn-lg btn3d" style="margin: 10px;" data-toggle="modal" data-target="#fertilizeWindow" onclick="setDefaultID()">Thêm thông tin</button>
+                    <br>
+                    <button type="button" class="btn btn-info btn-lg btn3d" style="margin: 10px;">Bắt đầu cây trồng mới</button>
+                    <!-- modal popup when click above btn -->
+                    <div class="modal fade" id="fertilizeWindow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Thêm các thông tin trong quá trình trồng</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row m-2">
+                                        <div class="col-4">
+                                            <label for="treeID" class="m-0 float-left">ID của cây</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input list="ID-list" class="form-control" name="" id="treeID" onclick="remove()">
+                                            <datalist id="ID-list">
+                                            </datalist>
+                                            <div id="treeDetail">
+                                                *mặc định là ID của cây đang trồng
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row m-2">
+                                        <div class="col-4">
+                                            <label for="datetime" class="m-0 float-left">Thời gian</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input type="datetime-local" class="form-control" name="" id="datetime">
+                                        </div>
+                                    </div>
+                                    <div class="row m-2">
+                                        <div class="col-4">
+                                            <label for="info" class="m-0 float-left">Thông tin</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control" name="" id="info">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer p-2">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="addOptinalInfo()">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -257,7 +302,7 @@
             </div>
             <!-- Chart -->
             <div class="row">
-                <div class="col-lg-10 mx-auto">
+                <div class="col-12 mx-auto">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active custom_aTag" id="nav-home-tab" data-toggle="tab" href="#tabHum" role="tab" aria-controls="nav-home" aria-selected="true">Độ ẩm không khí</a>
@@ -400,7 +445,7 @@
     </section>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-to-top d-lg-none position-fixed ">
+    <div class="scroll-to-top d-lg-none position-fixed">
         <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
@@ -414,6 +459,17 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for this template -->
     <script src="js/lib/freelancer.min.js"></script>
+    <!-- firebase cdn -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
+    <!-- firebase config -->
+    <script src="js/firebase/firebaseInit.js"></script>
+    <!-- interact with firebase -->
+    <script src="js/firebase/control.js"></script>
+    <script src="js/firebase/getCurState.js"></script>
+    <!-- generate ID -->
+    <script src="js/generateAutoID.js"></script>
     <!-- custom date format in js -->
     <script src="js/DateFormat.js"></script>
     <!-- draw chart -->
@@ -425,15 +481,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <!-- save img -->
     <script src="js/saveImg.js"></script>
-    <!-- firebase cdn -->
-    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
-    <!-- firebase config -->
-    <script src="js/firebase/firebaseInit.js"></script>
-    <!-- interact with firebase -->
-    <script src="js/firebase/control.js"></script>
-    <script src="js/firebase/getCurState.js"></script>
+    <!-- get all tree ID -->
+    <script src="js/add_optional_info/getIDfromDB.js"></script>
+    <!-- add optinal info to DB -->
+    <script src="js/add_optional_info/add_Info.js"></script>
 </body>
 
 </html>

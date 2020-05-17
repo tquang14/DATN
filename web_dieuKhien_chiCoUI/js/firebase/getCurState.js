@@ -39,5 +39,11 @@ for (let index = 0; index < sensorRefs.length; index++) {
             sensorDiv.childNodes[0].nodeValue = snapshot.val();
         }
     });
-
 }
+
+// get current tree ID
+var curID = "";
+var ID = firebase.database().ref('ID');
+ID.on('value', function(snapshot) {
+    curID = snapshot.val();
+});
