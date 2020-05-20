@@ -356,6 +356,15 @@ kbd kbd {
     margin-left: auto
 }
 
+@media screen and (max-width: 576px) {
+    .card-body {
+        padding: 0px !important;
+    }
+    .p-3 {
+        padding: 0px !important;
+    }
+}
+
 @media (min-width:576px) {
     .container {
         max-width: 540px

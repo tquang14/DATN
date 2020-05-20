@@ -233,7 +233,7 @@
                     <button type="button" class="btn btn-info btn-lg btn3d" style="margin: 10px;" data-toggle="modal" data-target="#addTreeModal">Bắt đầu cây trồng mới</button> -->
                     <!-- modal popup to add optional info -->
                     <div class="modal fade" id="addOptionalInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Quản lý cây</h5>
@@ -248,6 +248,7 @@
                                         <li class="nav-item"> <a class="nav-link" href="#modify" data-toggle="tab">Chỉnh sửa</a> </li>
                                     </ul>
                                     <div class="tab-content">
+                                        <!-- add optional info modal -->
                                         <div class="tab-pane fade show active" id="add-optional-info" role="tabpanel">
                                             <div class="row m-2">
                                                 <div class="col-4">
@@ -256,6 +257,7 @@
                                                 <div class="col-8">
                                                     <input list="ID-list" class="form-control" name="" id="treeID" onclick="remove()">
                                                     <datalist id="ID-list">
+                                                        <!-- list will be added by js when request info from DB finish -->
                                                     </datalist>
                                                     <div id="treeDetail">
                                                         *mặc định là ID của cây đang trồng
@@ -283,6 +285,7 @@
                                                 <button type="button" class="btn btn-primary" onclick="addOptinalInfo()">Save</button>
                                             </div>
                                         </div>
+                                        <!-- add new tree modal -->
                                         <div class="tab-pane fade" id="add-tree" role="tabpanel">
                                             <div class="row m-2">
                                                 <div class="col text-right">
@@ -302,7 +305,7 @@
                                                 <div class="col-4">
                                                     <label for="" class="m-0 float-left">Tên cây:</label>
                                                 </div>
-                                                <div class="col-8 ">
+                                                <div class="col-8">
                                                     <input type="text" class="form-control" name="" id="addTree_Name">
                                                 </div>
                                             </div>
@@ -310,7 +313,7 @@
                                                 <div class="col-4">
                                                     <label for="" class="m-0 float-left">Nơi trồng:</label>
                                                 </div>
-                                                <div class="col-8 ">
+                                                <div class="col-8">
                                                     <input type="text" class="form-control" name="" id="addTree_Location">
                                                 </div>
                                             </div>
@@ -337,45 +340,108 @@
                                                 <button type="button" class="btn btn-primary" onclick="addTree()">Save</button>
                                             </div>
                                         </div>
+                                        <!-- modify info modal -->
                                         <div class="tab-pane fade" id="modify" role="tabpanel">
-                                            modify UI
+                                            <div id="accordionExample">
+                                                <div class="card mt-2" style="border: none;">
+                                                    <div class="card-header text-left">
+                                                        <a class="card-link" data-toggle="collapse" href="#collapseOne" aria-expanded="false" id="cardLink1">
+                                                            <span class="fa fa-minus"></span> Chọn cây cần chỉnh sửa
+                                                        </a>
+                                                    </div>
+                                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            <div class="hscroll">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col">ID</th>
+                                                                            <th scope="col">Tên</th>
+                                                                            <th scope="col">Ngày trồng</th>
+                                                                            <th scope="col">Ngày thu hoạch</th>
+                                                                            <th scope="col">Địa điểm</th>
+                                                                            <th scope="col">Thao tác</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="tableContent">
+                                                                        <!-- content will be added by js when request from DB -->
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card mt-2" style="border: none;">
+                                                    <div class="card-header text-left">
+                                                        <a class="card-link" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" id="cardLink2">
+                                                            <span class="fa fa-plus"></span> Chỉnh sửa thông tin
+                                                        </a>
+                                                    </div>
+                                                    <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+                                                        <h6 class="mt-2" style="color: #1ABC9C;">Chỉnh sửa thông tin cơ bản</h6>
+                                                        <div class="card-body" id="editUI">
+                                                            <div class="row m-2">
+                                                                <div class="col-4">
+                                                                    <label for="addTree_ID" class="m-0 float-left">ID của cây:</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input type="text" class="form-control" name="" disabled id="modifyTree_ID">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row m-2">
+                                                                <div class="col-4">
+                                                                    <label for="" class="m-0 float-left">Tên cây:</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input type="text" class="form-control" name="" id="modifyTree_Name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row m-2">
+                                                                <div class="col-4">
+                                                                    <label for="" class="m-0 float-left">Nơi trồng:</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input type="text" class="form-control" name="" id="modifyTree_Location">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row m-2">
+                                                                <div class="col-4">
+                                                                    <label for="" class="m-0 float-left">Ngày trồng:</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input type="datetime-local" class="form-control" name="" id="modifyTree_dateStart">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row m-2">
+                                                                <div class="col-4">
+                                                                    <label for="" class="m-0 float-left">Thu hoạch:</label>
+                                                                    <br>
+                                                                    <span style="font-size: 12px; color: grey;" class="float-left">(*dự kiến)</span>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input type="datetime-local" class="form-control" name="" id="modifyTree_dateEnd">
+                                                                </div>
+                                                            </div>
+                                                            <h6 class="pt-2" style="color: #1ABC9C; border-top: 1px solid rgba(0,0,0,.125); max-width: fit-content; margin: auto;">Chỉnh sửa thông tin khác</h6>
+                                                            <div id="modify_optionalInfo">
+                                                                <!-- UI will be added through js when sucessfully request info to server -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="float-right">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary" onclick="applyChange()">save</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- modal popup to add new tree -->
-                    <!-- <div class="modal fade" id="addTreeModal" tabindex="-1" role="dialog" aria-labelledby="addTreeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="addTreeModalLabel">Nhập các thông tin về cây trồng</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row m-2">
-                                        <div class="col-4">
-                                            <label for="treeID" class="m-0 float-left">ID của cây</label>
-                                        </div>
-                                        <div class="col-8">
-                                            <input type="text" class="form-control" name="" id="newTreeID">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer p-2">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" onclick="">Save</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
-        </div>
     </section>
 
 
@@ -575,10 +641,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <!-- save img -->
     <script src="js/saveImg.js"></script>
+    <!-- toogle icon in card header when expand and collapse -->
+    <script src="js/toggleIcon.js"></script>
     <!-- get all tree ID -->
     <script src="js/add_optional_info/getIDfromDB.js"></script>
     <!-- add optinal info to DB -->
     <script src="js/add_optional_info/add_Info.js"></script>
+    <!-- modify tree info -->
+    <script src="js/add_optional_info/applyChange.js"></script>
 </body>
 
 </html>

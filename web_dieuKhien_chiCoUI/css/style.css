@@ -36,6 +36,26 @@
     display: inline-block;
 }
 
+#icon-checked {
+    background: url('../img/pencil.svg');
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+}
+
+#icon-del {
+    background: url('../img/delete.svg');
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+}
+
+#icon-x {
+    background: url('../img/interface.svg');
+    display: inline-block;
+    max-width: 38px;
+}
+
 .chartContainer {
     width: auto;
     height: auto;
@@ -372,4 +392,24 @@ input:checked:focus+.switch-left+.switch-right {
     display: inline-block;
     color: darkgray;
     font-size: 12px;
+}
+
+
+/* th {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    font-size: 15px;
+} */
+
+.hscroll {
+    overflow-x: auto;
+}
+
+.featureIcon {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+#tableContent {
+    font-weight: 500;
 }

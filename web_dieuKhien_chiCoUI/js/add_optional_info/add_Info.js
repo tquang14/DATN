@@ -26,7 +26,12 @@ function addTree() {
         url: getURL,
         type: "GET",
         success: function(data) {
-            alert("them thong tin thanh cong");
+            if (data == "ID existed") {
+                alert("ID đã tồn tại");
+            } else {
+                alert("them thong tin thanh cong");
+                getfullTreeInfo();
+            }
         },
         error: function(data) {
             alert("ko co ket noi toi database");
