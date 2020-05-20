@@ -21,10 +21,26 @@
             }
         }
         elseif (isset($_POST['type']) && $_POST['type'] == "optional_info") {
-            echo "not developed yet";
+            $error = FALSE;
+            if (isset($_POST['_index']) && isset($_POST['date']) && isset($_POST['info'])) {
+                $_indexArr = $_POST['_index'];
+                $dateArr = $_POST['date'];
+                $infoArr = $_POST['info'];
+                for ($i= 0; $i < count($_indexArr); $i++) { 
+                    $sql = "UPDATE optional_info SET type = '$infoArr[$i]', date = '$dateArr[$i]'
+                        WHERE _index = $_indexArr[$i]";
+                    if ($conn->query($sql) != TRUE) {
+                        $error = TRUE;
+                        echo "error at _index:" . $_indexArr[$i];
+                    }
+                }
+                if ($error != TRUE) {
+                    echo "update successfully";
+                }   
+            }
         }
         else {
-            echo "type erroe";
+            echo "type error";
         }
     }
     $conn->close();
