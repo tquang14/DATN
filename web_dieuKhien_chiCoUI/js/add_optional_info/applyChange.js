@@ -14,7 +14,8 @@ function applyChange() {
             getfullTreeInfo();
         },
         error: function(data) {
-            console.log(data);
+            alert("Lỗi kết nối");
+            console.log(date);
         }
     });
     var modifyDIV = document.getElementById("modify_optionalInfo");
@@ -38,10 +39,12 @@ function applyChange() {
         type: "POST",
         data: optionalData,
         success: function(data) {
+            alert("Cập nhật thông tin thành công");
             console.log(data);
             getfullTreeInfo();
         },
         error: function(data) {
+            alert("Lỗi kết nối");
             console.log(data);
         }
     });

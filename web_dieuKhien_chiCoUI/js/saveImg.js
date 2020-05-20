@@ -23,3 +23,12 @@ function saveChart() {
             window.saveAs(blob, divID + "_" + date + ".png");
         });
 }
+
+function saveQRImg() {
+    var divID = document.getElementById("QRcodeIMG");
+    var id = document.getElementById("treeID_1").value;
+    domtoimage.toBlob(divID.childNodes[0])
+        .then(function(blob) {
+            window.saveAs(blob, id + ".png");
+        });
+}

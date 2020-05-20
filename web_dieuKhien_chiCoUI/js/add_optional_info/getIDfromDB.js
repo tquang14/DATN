@@ -5,8 +5,11 @@ function getfullTreeInfo() {
         success: function(data) {
             // create element for input list in add tree UI
             var ID_list = document.getElementById("ID-list");
+            // create element for input list in QRcode UI
+            var ID_list_1 = document.getElementById("ID-list_1");
             // refresh div before load data again to avoid duplicate
             ID_list.innerHTML = "";
+            ID_list_1.innerHTML = "";
             for (let i = 0; i < data.length; i++) {
                 var option = document.createElement("option");
                 option.value = data[i].ID;
@@ -15,6 +18,7 @@ function getfullTreeInfo() {
                 option.innerHTML = data[i].name + ',' + dateStart + ',' + location;
                 ID_list.appendChild(option);
             }
+            ID_list_1.appendChild(ID_list.cloneNode(true));
             // create content for table in modify UI
             var tableContent = document.getElementById('tableContent');
             // refresh div before load data again to avoid duplicate
@@ -43,8 +47,11 @@ function getfullTreeInfo() {
 }
 getfullTreeInfo();
 
-function remove() {
-    document.getElementById("treeID").value = "";
+function remove(pos) {
+    if (pos == '1')
+        document.getElementById("treeID_1").value = "";
+    else
+        document.getElementById("treeID").value = "";
 }
 
 function setDefaultID() {

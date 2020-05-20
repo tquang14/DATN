@@ -84,7 +84,7 @@
                                 <img id="icon_cay" src="img/portfolio/icon_caChua.png" alt="" height="100px" style="margin-bottom: 5px">
                             </div>
 
-                            <div id="temperature" class="col" title="Nhiệt độ">
+                            <div id="temperature" class="col p-0" title="Nhiệt độ">
                                 30.04
                                 <span id="icon-thermometer" class="wi tempIcon"></span>
                             </div>
@@ -544,11 +544,28 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- QRcode -->
-            <div id="QRcode">
-                Note: <br> ---QRCODE--- <br> Quét QRcode cũng sẽ hiển thị trang web dành cho khách hàng (chỉ chứa các thông tin về cây trồng, ko có chức năng điều khiển)
+            <div class="row">
+                <div class="col" style="margin: auto;">
+                    <div class="input-group" style="max-width: 300px; margin: auto;">
+                        <input list="ID-list_1" class="form-control" name="" id="treeID_1" onclick="remove('1')" onchange="drawQRcode()">
+                        <datalist id="ID-list_1">
+                            <!-- list will be added by js when request info from DB finish -->
+                        </datalist>
+                        <br>
+                    </div>
+                </div>
             </div>
-            <button class="btn btn-success btn-lg btn3d btn-xl" id="saveQRcode">Lưu hình</button>
-            <button class="btn btn-success btn-lg btn3d btn-xl" id="gotoCustomerPage">Đi đến trang web dành cho khách</button>
+            <div class="row">
+                <div class="col" style="margin: auto;">
+                    *mặc định là ID của cây đang trồng
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="QRcodeIMG" style="margin: auto;">
+                </div>
+            </div>
+            <button class="btn btn-success btn-lg btn3d btn-xl" id="saveQRcode" onclick="saveQRImg()">Lưu hình</button>
+            <button class="btn btn-success btn-lg btn3d btn-xl" id="gotoCustomerPage" onclick="gotoWeb()">Đi đến trang web dành cho khách</button>
         </div>
 
     </section>
@@ -649,6 +666,11 @@
     <script src="js/add_optional_info/add_Info.js"></script>
     <!-- modify tree info -->
     <script src="js/add_optional_info/applyChange.js"></script>
+    <!-- QR code -->
+    <!-- <script type="text/javascript" src="js/lib/jquery-qrcode/jquery.qrcode.min.js"></script> -->
+    <script type="text/javascript" src="js/lib/jquery-qrcode/src/jquery.qrcode.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-qrcode/src/qrcode.js"></script>
+    <script src="js/drawQRcode.js"></script>
 </body>
 
 </html>

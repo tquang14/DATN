@@ -46,4 +46,6 @@ var curID = "";
 var ID = firebase.database().ref('ID');
 ID.on('value', function(snapshot) {
     curID = snapshot.val();
+    document.getElementById('treeID_1').value = curID;
+    drawQRcode();
 });
