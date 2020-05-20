@@ -12,15 +12,26 @@
         if (!$mysqli) {
             die("connection failed:" . $mysqli->error);
         }
-        $sql = "SELECT * FROM tree";
-        $result = $mysqli->query($sql);
-        // get data into array by loop through result
-        $data = array();
-        foreach ($result as $row) {
-            $data[] = $row;
+        if(isset($_GET['id'])) {
+            $ID = $_GET['id'];
+            $sql = "SELECT * FROM tree WHERE ID = '$ID'";
+            $result = $mysqli->query($sql);
+            // get data into array by loop through result
+            $data = array();
+            foreach ($result as $row) {
+                $data[] = $row;
+            }          
+        } else {         
+            $sql = "SELECT * FROM tree";
+            $result = $mysqli->query($sql);
+            // get data into array by loop through result
+            $data = array();
+            foreach ($result as $row) {
+                $data[] = $row;
+            }
         }
         $result->close();
         $mysqli->close();
-        print json_encode($data);   
+        print json_encode($data);
     }
 ?>

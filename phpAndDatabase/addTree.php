@@ -10,11 +10,18 @@
             $location = $_GET["location"];
             $datetimeStart = $_GET["datetimeStart"];
             $datetimeEnd = $_GET["datetimeEnd"];
-            $sql = "INSERT INTO tree(ID, name, dateStart, dateEnd, location)
+            $sql = "SELECT COUNT(*) FROM tree WHERE ID= '$ID'";
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+            if ($row['COUNT(*)'] != 0) {
+                echo "ID existed";
+            }
+            else {
+                $sql = "INSERT INTO tree(ID, name, dateStart, dateEnd, location)
                     VALUE ('$ID', '$name', '$datetimeStart', '$datetimeEnd', '$location')";
-            echo $sql;
-            if ($conn->query($sql) == TRUE) {
-                echo "New record created successfully <br>";
+                if ($conn->query($sql) == TRUE) {
+                    echo "New record created successfully";
+                }
             }
         }
         else {
