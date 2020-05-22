@@ -1,51 +1,55 @@
+const ip = "192.168.1.20";
+const port = "80"; //default is 80
 // these function in this file interact with firebase and control hardware
 function pump() {
     var pumpSwitch = document.getElementById('pumpSwitch');
     if (pumpSwitch.checked) {
-        //gui len firebase
-        firebase.database().ref('bom/state').set('on');
+        request('/bom/state', 'on');
     } else {
-        //gui len firebase
-        firebase.database().ref('bom/state').set('off');
+        request('/bom/state', 'off');
     }
 }
 
 function misting() {
     var mistingSwitch = document.getElementById('mistingSwitch');
     if (mistingSwitch.checked) {
-        //gui len firebase
-        firebase.database().ref('phunsuong/state').set('on');
+        request('/phunsuong/state', 'on');
     } else {
-        //gui len firebase
-        firebase.database().ref('phunsuong/state').set('off');
+        request('/phunsuong/state', 'off');
     }
 }
 
 function roof() {
     var roofSwitch = document.getElementById('roofSwitch');
     if (roofSwitch.checked) {
-        //gui len firebase
-        firebase.database().ref('maiChe/state').set('on');
+        request('/maiChe/state', 'on');
     } else {
-        //gui len firebase
-        firebase.database().ref('maiChe/state').set('off');
+        request('/maiChe/state', 'off');
     }
 }
 
 function light() {
     var lightSwitch = document.getElementById('lightSwitch');
     if (lightSwitch.checked) {
-        //gui len firebase
-        firebase.database().ref('den/state').set('on');
+        request('/den/state', 'on');
     } else {
-        //gui len firebase
-        firebase.database().ref('den/state').set('off');
+        request('/den/state', 'off');
     }
 }
 
-function treeChange() {
+function request(name, state) {
+    $.ajax({
+        url: "http://" + ip + ":" + port + "/DATN/setStatus.php?name=" + name + "&status=" + state,
+        type: "GET",
+        success: function(data) {
 
+        },
+        error: function(data) {
+            alert("ko co ket noi toi database");
+        }
+    });
 }
+
 // change display card in html to on or off style
 function changeDeviceCardStyle(device, mode) {
     var icon = document.getElementById(device + 'Icon');

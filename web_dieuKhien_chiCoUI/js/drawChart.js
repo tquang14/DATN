@@ -1,6 +1,5 @@
 // get the date and update to html
-const ip = "192.168.1.20";
-const port = "80"; //default is 80
+
 curDate = new Date();
 datePicker = document.getElementById('date');
 datePicker.value = curDate.toFormattedString('yyyy-mm-dd');
