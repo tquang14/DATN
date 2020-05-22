@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 21, 2020 lúc 04:02 AM
+-- Thời gian đã tạo: Th5 22, 2020 lúc 03:28 PM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.9
 
@@ -23,6 +23,33 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `datn` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `datn`;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `device_status`
+--
+
+DROP TABLE IF EXISTS `device_status`;
+CREATE TABLE IF NOT EXISTS `device_status` (
+  `name` varchar(255) NOT NULL,
+  `status` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Đang đổ dữ liệu cho bảng `device_status`
+--
+
+INSERT INTO `device_status` (`name`, `status`) VALUES
+('/bom/state', 'off'),
+('/den/state', 'off'),
+('/phunsuong/state', 'off'),
+('curID', 'gwv88e3w'),
+('/maiChe/state', 'off'),
+('/sensor_doAmdat', '29'),
+('/sensor_doAmkk', '80'),
+('/sensor_nhietdo', '30.04'),
+('/sensor_mua', 'khong');
 
 -- --------------------------------------------------------
 
