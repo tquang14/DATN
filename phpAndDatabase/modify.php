@@ -4,15 +4,16 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {   
         if (isset($_POST['type']) && $_POST['type'] == "tree") {
             if (isset($_POST['ID']) && isset($_POST['name']) && isset($_POST['dateStart']) 
-                && isset($_POST['dateEnd']) && isset($_POST['location'])) {
+                && isset($_POST['address']) && isset($_POST['dateEnd']) && isset($_POST['location'])) {
                 
                 $id = $_POST['ID'];
                 $name = $_POST['name'];
                 $dateStart = $_POST['dateStart'];
                 $dateEnd = $_POST['dateEnd'];
                 $location = $_POST['location'];
+                $address = $_POST['address'];
                 $sql = "UPDATE tree SET name = '$name', dateStart = '$dateStart', 
-                        dateEnd = '$dateEnd', location = '$location' WHERE ID = '$id'";
+                        dateEnd = '$dateEnd', location = '$location', address = '$address' WHERE ID = '$id'";
                 if ($conn->query($sql) == TRUE) {
                     echo "update successfully";
                 }
