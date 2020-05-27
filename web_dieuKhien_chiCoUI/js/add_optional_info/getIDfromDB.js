@@ -7,6 +7,7 @@ function getfullTreeInfo() {
             var ID_list = document.getElementById("ID-list");
             // create element for input list in QRcode UI
             var ID_list_1 = document.getElementById("ID-list_1");
+            var ID_list_2 = document.getElementById('ID-list_2');
             // refresh div before load data again to avoid duplicate
             ID_list.innerHTML = "";
             ID_list_1.innerHTML = "";
@@ -19,6 +20,7 @@ function getfullTreeInfo() {
                 ID_list.appendChild(option);
             }
             ID_list_1.appendChild(ID_list.cloneNode(true));
+            ID_list_2.appendChild(ID_list.cloneNode(true));
             // create content for table in modify UI
             var tableContent = document.getElementById('tableContent');
             // refresh div before load data again to avoid duplicate
@@ -50,12 +52,15 @@ getfullTreeInfo();
 function remove(pos) {
     if (pos == '1')
         document.getElementById("treeID_1").value = "";
+    else if (pos == '2')
+        document.getElementById("treePackID").value = "";
     else
         document.getElementById("treeID").value = "";
 }
 
 function setDefaultID() {
     document.getElementById('treeID').value = curID;
+    document.getElementById('treePackID').value = curID;
 }
 // function to run when click edit btn => get value from DB and display
 function edit(ID) {
@@ -71,6 +76,7 @@ function edit(ID) {
             document.getElementById('modifyTree_dateStart').value = data[0].dateStart.replace(" ", "T");
             document.getElementById('modifyTree_dateEnd').value = data[0].dateEnd.replace(" ", "T");
             document.getElementById('modifyTree_Location').value = data[0].location;
+            document.getElementById('modifyTree_Address').value = data[0].address;
         },
         error: function(data) {
             alert("co loi chi tiet xem console");

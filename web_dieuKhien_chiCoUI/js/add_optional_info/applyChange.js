@@ -4,7 +4,8 @@ function applyChange() {
     var dateStart = document.getElementById("modifyTree_dateStart").value;
     var dateEnd = document.getElementById("modifyTree_dateEnd").value;
     var location = document.getElementById("modifyTree_Location").value;
-    var treeData = { type: 'tree', ID: ID, name: name, dateStart: dateStart, dateEnd: dateEnd, location: location };
+    var address = document.getElementById("modifyTree_Address").value;
+    var treeData = { type: 'tree', ID: ID, name: name, dateStart: dateStart, dateEnd: dateEnd, location: location, address: address };
     $.ajax({
         url: "http://" + ip + ":" + port + "/DATN/modify.php",
         type: "POST",

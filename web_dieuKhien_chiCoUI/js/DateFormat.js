@@ -21,7 +21,6 @@ Date.prototype.toFormattedString = function(f) {
 Date.prototype.getMonthName = function() {
     return this.toLocaleString().replace(/[^a-z]/gi, '');
 };
-
 //n.b. this is sooo not i18n safe :)
 Date.prototype.getDayName = function() {
     switch (this.getDay()) {
