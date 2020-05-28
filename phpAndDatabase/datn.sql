@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 22, 2020 lúc 03:28 PM
+-- Thời gian đã tạo: Th5 28, 2020 lúc 03:43 AM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.9
 
@@ -76,6 +76,27 @@ INSERT INTO `optional_info` (`date`, `type`, `ID`, `_index`) VALUES
 ('2020-04-01 00:00:00', 'apatit', 'gwv88e3w', 3),
 ('2020-05-20 19:39:00', 'tá»‰a lÃ¡', 'gwv88e3w', 4),
 ('2020-05-19 22:12:00', 'test', '8psrqt2o', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `pack`
+--
+
+DROP TABLE IF EXISTS `pack`;
+CREATE TABLE IF NOT EXISTS `pack` (
+  `ID` char(8) NOT NULL,
+  `datePack` datetime DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Đang đổ dữ liệu cho bảng `pack`
+--
+
+INSERT INTO `pack` (`ID`, `datePack`, `location`, `address`) VALUES
+('gwv88e3w', '2020-05-27 10:24:00', 'ÄÃ  Láº¡t', '123/456, ABC, XYZ');
 
 -- --------------------------------------------------------
 
@@ -298,6 +319,7 @@ CREATE TABLE IF NOT EXISTS `tree` (
   `dateStart` datetime DEFAULT NULL,
   `dateEnd` datetime DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -305,11 +327,12 @@ CREATE TABLE IF NOT EXISTS `tree` (
 -- Đang đổ dữ liệu cho bảng `tree`
 --
 
-INSERT INTO `tree` (`ID`, `name`, `dateStart`, `dateEnd`, `location`) VALUES
-('8psrqt2o', 'CÃ  chua', '2020-05-19 21:58:00', '2020-08-19 09:58:00', 'SÃ i GÃ²n'),
-('gl74r0mp', 'cÃ  chua', '2020-03-09 19:50:00', '2020-05-09 20:50:00', 'HÃ  Ná»™i'),
-('gwv88e3w', 'cÃ  chua', '2020-05-10 00:00:00', '2020-08-10 00:00:00', 'ÄÃ  Láº¡t'),
-('vo97k8f1', 'test', '2020-05-20 21:57:00', '2020-08-20 21:57:00', 'test');
+INSERT INTO `tree` (`ID`, `name`, `dateStart`, `dateEnd`, `location`, `address`) VALUES
+('8psrqt2o', 'CÃ  chua', '2020-05-19 21:58:00', '2020-08-19 09:58:00', 'SÃ i GÃ²n', '123/456 ABC, XYZ'),
+('gl74r0mp', 'cÃ  chua', '2020-03-09 19:50:00', '2020-05-09 20:50:00', 'HÃ  Ná»™i', '123/456 ABC, XYZ'),
+('gwv88e3w', 'cÃ  chua', '2020-05-10 00:00:00', '2020-08-10 00:00:00', 'ÄÃ  Láº¡t', '123/456 phÆ°á»ng ABC, quáº­n XYZ'),
+('u4lgnkwc', 'Cáº£i chip', '2020-05-27 07:34:00', '2020-06-03 07:34:00', 'NÃ´ng trÆ°á»ng Vineco', 'Tá»• 12, áº¤p 5, XÃ£ Long PhÆ°á»›c, Huyá»‡n Long ThÃ nh, Tá»‰nh Äá»“ng Nai'),
+('vo97k8f1', 'test', '2020-05-20 21:57:00', '2020-08-20 21:57:00', 'test', '123/456 ABC, XYZ');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
