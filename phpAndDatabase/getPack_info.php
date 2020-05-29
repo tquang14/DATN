@@ -5,7 +5,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "GET") {   
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            $sql = "SELECT * FROM optional_info WHERE ID = '$id'";          
+            $sql = "SELECT * FROM pack WHERE ID = '$id'";          
             $result = $conn->query($sql);
             // get data into array by loop through result
             $data = array();

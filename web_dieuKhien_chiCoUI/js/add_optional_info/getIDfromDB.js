@@ -11,6 +11,7 @@ function getfullTreeInfo() {
             // refresh div before load data again to avoid duplicate
             ID_list.innerHTML = "";
             ID_list_1.innerHTML = "";
+            ID_list_2.innerHTML = "";
             for (let i = 0; i < data.length; i++) {
                 var option = document.createElement("option");
                 option.value = data[i].ID;
@@ -84,6 +85,7 @@ function edit(ID) {
         }
     });
     requestOptionalInfo(ID);
+    requestPackInfo(ID);
 }
 // request optional info and display to UI
 function requestOptionalInfo(ID) {
@@ -118,8 +120,34 @@ function requestOptionalInfo(ID) {
     });
 }
 
+// request packed info and display to UI
+function requestPackInfo(ID) {
+    var datetime = document.getElementById('modify_packDatetime');
+    var location = document.getElementById('modify_packLocation');
+    var address = document.getElementById('modify_packAddress');
+    $.ajax({
+        url: "http://" + ip + ":" + port + "/DATN/getPack_info.php?id=" + ID,
+        type: "GET",
+        success: function(data) {
+            if (data.length === 0) {
+
+            } else {
+                datetime.value = data[0].datePack.replace(" ", "T");;
+                location.value = data[0].location;
+                address.value = data[0].address;
+            }
+        },
+        error: function(data) {
+            alert("co loi chi tiet xem console");
+            console.log(data);
+        }
+    });
+}
+
 function del(ID) {
     if (ID.indexOf("optional_") != -1) {
+
+        // remove info in DB
         var _index = ID.substring(ID.indexOf("_") + 1);
         console.log(_index);
         $.ajax({
@@ -136,6 +164,17 @@ function del(ID) {
             }
         });
     } else {
+        // remove the UI in website
+        document.getElementById("modifyTree_ID").value = "";
+        document.getElementById("modifyTree_Name").value = "";
+        document.getElementById("modifyTree_Location").value = "";
+        document.getElementById("modifyTree_Address").value = "";
+        document.getElementById("modifyTree_dateStart").value = "";
+        document.getElementById("modifyTree_dateEnd").value = "";
+        document.getElementById("modify_packDatetime").value = "";
+        document.getElementById("modify_packLocation").value = "";
+        document.getElementById("modify_packAddress").value = "";
+        // then remove in DB
         $.ajax({
             url: "http://" + ip + ":" + port + "/DATN/delTree.php?id=" + ID,
             type: "GET",

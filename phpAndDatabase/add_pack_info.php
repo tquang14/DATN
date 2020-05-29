@@ -4,7 +4,6 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($_POST["id"]) && !empty($_POST["datePack"]) 
             && !empty($_POST["location"])   && !empty($_POST["address"])) {
-            
             $datePack = $_POST["datePack"];
             $ID = $_POST["id"];
             $location = $_POST["location"];
@@ -14,11 +13,16 @@
             $result = $conn->query($sql);
             $row = $result->fetch_assoc();
             if ($row['COUNT(*)'] != 0) {
-                echo "ID existed";
+                exit("ID existed");
             }
-
+            $sql = "SELECT COUNT(*) FROM tree WHERE ID= '$ID'";
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+            if ($row['COUNT(*)'] <= 0) {
+                exit("No tree found");
+            }
             $sql = "INSERT INTO pack(ID, datePack, location, address)
-                    VALUE ('$ID', '$datePack', '$location' ,'$address')";
+                VALUE ('$ID', '$datePack', '$location' ,'$address')";
             if ($conn->query($sql) == TRUE) {
                 echo "New record created successfully <br>";
             }
