@@ -1,5 +1,5 @@
 <?php
-    require_once('getData.php');
+require_once('getData.php');
 ?>
 <html lang="en">
 
@@ -10,11 +10,27 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <!-- JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <!-- JS, Popper.js, and jQuery
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <!-- Reset CSS -->
+    <link href="./css/reset.css" rel="stylesheet" type="text/css">
+    <!-- Timeline CSS -->
+    <link href="./css/horizontal_timeline.2.0_v2.0.5.2.css" rel="stylesheet" type="text/css">
+    <!-- jQuery JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!-- Timeline JS-->
+    <script src="./JavaScript/horizontal_timeline.2.0_v2.0.5.2.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .container_1 {
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+    </style>
 </head>
 
 <body>
@@ -45,7 +61,7 @@
                 <div class="card">
                     <div class="card-body">
                         <?php
-                            echo $treeData['name'];
+                        echo $treeData['name'];
                         ?>
                     </div>
                 </div>
@@ -65,7 +81,7 @@
                     <div class="card-body">
                         <p class="card-text">
                             <?php
-                                echo $treeData['ID'];
+                            echo $treeData['ID'];
                             ?>
                         </p>
                     </div>
@@ -75,7 +91,7 @@
                     <div class="card-body">
                         <p class="card-text">
                             <?php
-                                echo $treeData['location'];
+                            echo $treeData['location'];
                             ?>
                         </p>
                     </div>
@@ -85,7 +101,7 @@
                     <div class="card-body">
                         <p class="card-text">
                             <?php
-                                echo $treeData['address'];
+                            echo $treeData['address'];
                             ?>
                         </p>
                     </div>
@@ -95,7 +111,7 @@
                     <div class="card-body">
                         <p class="card-text">
                             <?php
-                                echo $treeData['dateStart'];
+                            echo $treeData['dateStart'];
                             ?>
                         </p>
                     </div>
@@ -105,7 +121,7 @@
                     <div class="card-body">
                         <p class="card-text">
                             <?php
-                                echo $treeData['dateEnd'];
+                            echo $treeData['dateEnd'];
                             ?>
                         </p>
                     </div>
@@ -126,7 +142,7 @@
                     <div class="card-body">
                         <p class="card-text">
                             <?php
-                                echo $packData['location'];
+                            echo $packData['location'];
                             ?>
                         </p>
                     </div>
@@ -136,7 +152,7 @@
                     <div class="card-body">
                         <p class="card-text">
                             <?php
-                                echo $packData['address'];
+                            echo $packData['address'];
                             ?>
                         </p>
                     </div>
@@ -146,7 +162,7 @@
                     <div class="card-body">
                         <p class="card-text">
                             <?php
-                                echo $packData['datePack'];
+                            echo $packData['datePack'];
                             ?>
                         </p>
                     </div>
@@ -156,7 +172,7 @@
                     <div class="card-body">
                         <p class="card-text">
                             <?php
-                                echo $packData['ID'];
+                            echo $packData['ID'];
                             ?>
                         </p>
                     </div>
@@ -167,17 +183,29 @@
             <div class="col pt-2 pl-3">
             </div>
         </div>
-        <a data-toggle="collapse" href="#collapse" aria-expanded="false">
+        <a aria-expanded="false">
             Thông tin chi tiết về quá trình trồng
         </a>
-        <div class="collapse" id="collapse">
-            <div>
-                -- timeline --
+        <div class="horizontal-timeline" id="timeline">
+            <div class="events-content">
+                <ol>
+                    <?php
+                    foreach ($timelineData as $value) {
+                    ?>
+                        <li data-horizontal-timeline='{"date": "<?php echo $value[0]; ?>"}'>
+                            <h2><?php echo $value[0]; ?></h2>
+                            <p><?php echo $value[1]; ?></p>
+                        </li>
+                    <?php
+                    }
+                    ?>
+                </ol>
             </div>
         </div>
     </div>
-    <!-- body content end -->
-
+    <script>
+        $('#timeline').horizontalTimeline();
+    </script>
 </body>
 
 </html>

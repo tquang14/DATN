@@ -1,0 +1,46 @@
+.header-text {
+    font-weight: 600;
+    color: #00a65a;
+}
+
+.body-content {
+    margin-top: 60px;
+    padding: 0px !important;
+}
+
+.b-top {
+    border-top: 3px solid #00a65a;
+}
+
+.card-body {
+    padding: 5px;
+}
+
+.card {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.row {
+    margin-left: 0px;
+}
+
+.card-header {
+    padding: .5rem .75rem;
+    font-weight: 600;
+}
+
+.card-body {
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+a {
+    text-decoration: none;
+    color: #1ABC9C;
+    font-size: 18px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #00a65a;
+}

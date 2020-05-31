@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/timeline.min.css">
+    <style>
+        .container {
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="timeline">
+            <div class="timeline__wrap">
+                <div class="timeline__items">
+                    <div class="timeline__item">
+                        <div class="timeline__content">
+                            <h2>Tieu de1</h2>
+                            <p>Noi Dung.1</p>
+                        </div>
+                    </div>
+                    <div class="timeline__item">
+                        <div class="timeline__content">
+                            <h2>Tieu de2</h2>
+                            <p>Noi Dung.2</p>
+                        </div>
+                    </div>
+                    <div class="timeline__item">
+                        <div class="timeline__content">
+                            <h2>Tieu de3</h2>
+                            <p>Noi Dung.3</p>
+                        </div>
+                    </div>
+                    <div class="timeline__item">
+                        <div class="timeline__content">
+                            <h2>Tieu de4</h2>
+                            <p>Noi Dung.4</p>
+                        </div>
+                    </div>
+                    <div class="timeline__item">
+                        <div class="timeline__content">
+                            <h2>Tieu de5</h2>
+                            <p>Noi Dung.5</p>
+                        </div>
+                    </div>
+                    <div class="timeline__item">
+                        <div class="timeline__content">
+                            <h2>Tieu de6</h2>
+                            <p>Noi Dung.6</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/timeline.min.js"></script>
+    <script>
+        timeline(document.querySelectorAll('.timeline'), {
+            mode: 'horizontal',
+            visibleItems: 4,
+            forceVerticalMode: 800
+        });
+    </script>
+</body>
+
+</html>
