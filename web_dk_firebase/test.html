@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="css/switchCustom.css">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+
+<body>
+    <div id="my-node">
+        You will get a image downloaded.
+    </div>
+
+    <button id="foo">download img</button>
+
+    <script>
+        var node = document.getElementById('my-node');
+        var btn = document.getElementById('foo');
+        btn.onclick = function() {
+            node.innerHTML = "I'm an image now."
+            domtoimage.toBlob(document.getElementById('my-node'))
+                .then(function(blob) {
+                    window.saveAs(blob, 'my-node.png');
+                });
+        }
+    </script>
+</body>
+
+</html>

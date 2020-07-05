@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+    <title>Admin</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Custom fonts for this theme -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <!-- Theme CSS -->
+    <link href="css/freelancer.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/switchCustom.css">
+
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">CONTROL PAGE</a>
+            <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    Menu
+    <i class="fas fa-bars"></i>
+    </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="#portfolio">Điều Khiển</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="#contact">Biểu đồ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="#QRcode">QRCODE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="#about">Thông tin</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <label class="checkbox-inline nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" type="checkbox" onclick="changeMode()" id="btn_mode" style="color:white;">auto</label>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a href="logout.php" class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger">Sign Out</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </br>
+    <!-- Masthead -->
+    <header class="jumbotron my-4">
+        <!-- weather section  -->
+        <div class="container-fluid">
+            <div class="row">
+                <div id="" class="col-10 mx-auto weather">
+                    <!-- weather header section -->
+                    <div class="weather-head">
+                        <h1 id="location" class="text-center display-4">Thông số hiện tại trong vườn</h1>
+                        <div class="row">
+                            <div id="loaiCay" class="description col text-center">
+                                <p class="desc">Loại cây đang trồng</p>
+                                <img id="icon_cay" src="img/portfolio/icon_caChua.png" alt="" height="100px" style="margin-bottom: 5px">
+                            </div>
+
+                            <div id="temperature" class="col p-0" title="Nhiệt độ">
+                                30.04
+                                <span id="icon-thermometer" class="wi tempIcon"></span>
+                            </div>
+                        </div>
+                        <!-- weather body header -->
+                        <div class="weather-body">
+                            <div class="row">
+                                <div class="humidity col-4">
+                                    <span id="icon-humidity" class="wi"></span><span> Độ ẩm không khí</span>
+                                </div>
+                                <div class="visibility col-4">
+                                    <span id="icon-SolidMoisture" class="wi"></span><span> Độ ẩm đất</span>
+                                </div>
+                                <div class="visibility col-4">
+                                    <span id="icon-rain" class="wi"></span><span> Mưa</span>
+                                </div>
+                            </div>
+                            <!-- weather body data -->
+                            <div class="row">
+                                <div id="humidity" class="humidity-data col-4" title="Độ ẩm không khí">
+                                    01.05 <span>%</span>
+                                </div>
+                                <div id="soil_moisture" class="degree-data col-4" title="Độ ẩm đất">
+                                    02.09 <span>%</span>
+                                </div>
+                                <div id="rain" class="degree-data col-4" title="Thời tiết" style="margin: auto;">
+                                    Không có mưa
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Control Section Heading -->
+    <section class="page-section portfolio" id="portfolio">
+        <div class="container">
+
+            <!-- Control Section Heading -->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Điều Khiển</h2>
+
+            <!-- Icon Divider -->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="divider-custom-line"></div>
+            </div>
+        </div>
+        <div class="row justify-content-center" id="control">
+            <div class="col-md-6">
+                <div class="deviceSW-container">
+                    <div class="card-deck pb-2">
+                        <div class="card text-white bg-dark">
+                            <div class="card-body card-custom">
+                                <div class="card-container">
+                                    <div class="row cardSwitch">
+                                        <label class="rocker">
+                                                <input type="checkbox" onchange="pump()" id="pumpSwitch">
+                                                <span class="switch-left">On</span>
+                                                <span class="switch-right">Off</span>
+                                            </label>
+                                    </div>
+                                    <div class="row cardRow">
+                                        <img class="col device-img" src="img/pump.svg" alt="demo" id="pumpIcon">
+                                        <div class="col" style="min-width: 100px;">
+                                            <h5 class="text-left cardText">Máy Bơm</h5>
+                                            <p class="text-left cardText" id="pumpText">Hoạt động từ: <br> --thời gian-- </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-dark">
+                            <div class="card-body card-custom">
+                                <div class="card-container">
+                                    <div class="row cardSwitch">
+                                        <label class="rocker">
+                                                <input type="checkbox" onchange="light()" id="lightSwitch">
+                                                <span class="switch-left">On</span>
+                                                <span class="switch-right">Off</span>
+                                            </label>
+                                    </div>
+                                    <div class="row cardRow">
+                                        <img class="col device-img" src="img/lightbulb.svg" alt="demo" id="lightIcon">
+                                        <div class="col" style="min-width: 100px;">
+                                            <h5 class="text-left cardText">Bóng đèn</h5>
+                                            <p class="text-left cardText" id="lightText">Hoạt động từ: <br> --thời gian-- </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-deck pt-2">
+                        <div class="card text-white bg-dark">
+                            <div class="card-body card-custom">
+                                <div class="card-container">
+                                    <div class="row cardSwitch">
+                                        <label class="rocker">
+                                                <input type="checkbox" onchange="misting()" id="mistingSwitch">
+                                                <span class="switch-left">On</span>
+                                                <span class="switch-right">Off</span>
+                                            </label>
+                                    </div>
+                                    <div class="row cardRow">
+                                        <img class="col device-img" src="img/mist.svg" alt="demo" id="mistingIcon">
+                                        <div class="col" style="min-width: 100px;">
+                                            <h5 class="text-left cardText">Phun Sương</h5>
+                                            <p class="text-left cardText" id="mistingText">Hoạt động từ: <br> --thời gian-- </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-dark">
+                            <div class="card-body card-custom">
+                                <div class="card-container">
+                                    <div class="row cardSwitch">
+                                        <label class="rocker">
+                                                <input type="checkbox" onchange="roof()" id="roofSwitch">
+                                                <span class="switch-left">On</span>
+                                                <span class="switch-right">Off</span>
+                                            </label>
+                                    </div>
+                                    <div class="row cardRow">
+                                        <img class="col device-img" src="img/roof.svg" alt="demo" id="roofIcon">
+                                        <div class="col" style="min-width: 100px;">
+                                            <h5 class="text-left cardText">Mái che</h5>
+                                            <p class="text-left cardText" id="roofText">Hoạt động từ: <br> --thời gian-- </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- note -->
+                    <!-- trong thay đổi cây trồng sẽ popup 1 cửa sổ cho phép đổi loại cây trong vườn, điều chỉnh các thông số tự động bật tắt thiết bị -->
+                    <br>
+                    <button type="button" class="btn btn-info btn-lg btn3d" style="margin: 10px;" data-toggle="modal" data-target="#addOptionalInfoModal" onclick="setDefaultID()">Quản lý cây</button>
+                    <!-- <br>
+                    <button type="button" class="btn btn-info btn-lg btn3d" style="margin: 10px;" data-toggle="modal" data-target="#addTreeModal">Bắt đầu cây trồng mới</button> -->
+                    <!-- modal popup to add optional info -->
+                    <div class="modal fade" id="addOptionalInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Quản lý cây</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body p-3">
+                                    <ul class="nav nav-tabs" id="tabContent">
+                                        <li class="nav-item"> <a class="nav-link active" href="#add-optional-info" data-toggle="tab">Thêm thông tin</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="#add-tree" data-toggle="tab">Thêm cây</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="#modify" data-toggle="tab">Chỉnh sửa</a> </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <!-- add optional info modal -->
+                                        <div class="tab-pane fade show active" id="add-optional-info" role="tabpanel">
+                                            <div class="row m-2">
+                                                <div class="col-4">
+                                                    <label for="treeID" class="m-0 float-left">ID của cây</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <input list="ID-list" class="form-control" name="" id="treeID" onclick="remove()">
+                                                    <datalist id="ID-list">
+                                                        <!-- list will be added by js when request info from DB finish -->
+                                                    </datalist>
+                                                    <div id="treeDetail">
+                                                        *mặc định là ID của cây đang trồng
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row m-2">
+                                                <div class="col-4">
+                                                    <label for="datetime" class="m-0 float-left">Thời gian</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <input type="datetime-local" class="form-control" name="" id="datetime">
+                                                </div>
+                                            </div>
+                                            <div class="row m-2">
+                                                <div class="col-4">
+                                                    <label for="info" class="m-0 float-left">Thông tin</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <input type="text" class="form-control" name="" id="info">
+                                                </div>
+                                            </div>
+                                            <div class="float-right">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" onclick="addOptinalInfo()">Save</button>
+                                            </div>
+                                        </div>
+                                        <!-- add new tree modal -->
+                                        <div class="tab-pane fade" id="add-tree" role="tabpanel">
+                                            <div class="row m-2">
+                                                <div class="col text-right">
+                                                    <span style="font-size: 12px; color: grey;">auto ID</span>
+                                                    <img src="img/random.svg" style="width: 20px; height: 20px;" onclick="setID()">
+                                                </div>
+                                            </div>
+                                            <div class="row m-2">
+                                                <div class="col-4">
+                                                    <label for="addTree_ID" class="m-0 float-left">ID của cây:</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <input type="text" class="form-control" name="" id="addTree_ID">
+                                                </div>
+                                            </div>
+                                            <div class="row m-2">
+                                                <div class="col-4">
+                                                    <label for="" class="m-0 float-left">Tên cây:</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <input type="text" class="form-control" name="" id="addTree_Name">
+                                                </div>
+                                            </div>
+                                            <div class="row m-2">
+                                                <div class="col-4">
+                                                    <label for="" class="m-0 float-left">Nơi trồng:</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <input type="text" class="form-control" name="" id="addTree_Location">
+                                                </div>
+                                            </div>
+                                            <div class="row m-2">
+                                                <div class="col-4">
+                                                    <label for="" class="m-0 float-left">Ngày trồng:</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <input type="datetime-local" class="form-control" name="" id="addTree_dateStart">
+                                                </div>
+                                            </div>
+                                            <div class="row m-2">
+                                                <div class="col-4">
+                                                    <label for="" class="m-0 float-left">Thu hoạch:</label>
+                                                    <br>
+                                                    <span style="font-size: 12px; color: grey;" class="float-left">(*dự kiến)</span>
+                                                </div>
+                                                <div class="col-8">
+                                                    <input type="datetime-local" class="form-control" name="" id="addTree_dateEnd">
+                                                </div>
+                                            </div>
+                                            <div class="float-right">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" onclick="addTree()">Save</button>
+                                            </div>
+                                        </div>
+                                        <!-- modify info modal -->
+                                        <div class="tab-pane fade" id="modify" role="tabpanel">
+                                            <div id="accordionExample">
+                                                <div class="card mt-2" style="border: none;">
+                                                    <div class="card-header text-left">
+                                                        <a class="card-link" data-toggle="collapse" href="#collapseOne" aria-expanded="false" id="cardLink1">
+                                                            <span class="fa fa-minus"></span> Chọn cây cần chỉnh sửa
+                                                        </a>
+                                                    </div>
+                                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            <div class="hscroll">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col">ID</th>
+                                                                            <th scope="col">Tên</th>
+                                                                            <th scope="col">Ngày trồng</th>
+                                                                            <th scope="col">Ngày thu hoạch</th>
+                                                                            <th scope="col">Địa điểm</th>
+                                                                            <th scope="col">Thao tác</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="tableContent">
+                                                                        <!-- content will be added by js when request from DB -->
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card mt-2" style="border: none;">
+                                                    <div class="card-header text-left">
+                                                        <a class="card-link" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" id="cardLink2">
+                                                            <span class="fa fa-plus"></span> Chỉnh sửa thông tin
+                                                        </a>
+                                                    </div>
+                                                    <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+                                                        <h6 class="mt-2" style="color: #1ABC9C;">Chỉnh sửa thông tin cơ bản</h6>
+                                                        <div class="card-body" id="editUI">
+                                                            <div class="row m-2">
+                                                                <div class="col-4">
+                                                                    <label for="addTree_ID" class="m-0 float-left">ID của cây:</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input type="text" class="form-control" name="" disabled id="modifyTree_ID">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row m-2">
+                                                                <div class="col-4">
+                                                                    <label for="" class="m-0 float-left">Tên cây:</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input type="text" class="form-control" name="" id="modifyTree_Name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row m-2">
+                                                                <div class="col-4">
+                                                                    <label for="" class="m-0 float-left">Nơi trồng:</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input type="text" class="form-control" name="" id="modifyTree_Location">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row m-2">
+                                                                <div class="col-4">
+                                                                    <label for="" class="m-0 float-left">Ngày trồng:</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input type="datetime-local" class="form-control" name="" id="modifyTree_dateStart">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row m-2">
+                                                                <div class="col-4">
+                                                                    <label for="" class="m-0 float-left">Thu hoạch:</label>
+                                                                    <br>
+                                                                    <span style="font-size: 12px; color: grey;" class="float-left">(*dự kiến)</span>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input type="datetime-local" class="form-control" name="" id="modifyTree_dateEnd">
+                                                                </div>
+                                                            </div>
+                                                            <h6 class="pt-2" style="color: #1ABC9C; border-top: 1px solid rgba(0,0,0,.125); max-width: fit-content; margin: auto;">Chỉnh sửa thông tin khác</h6>
+                                                            <div id="modify_optionalInfo">
+                                                                <!-- UI will be added through js when sucessfully request info to server -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="float-right">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary" onclick="applyChange()">save</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+    <!-- Chart Section -->
+    <section class="page-section" id="contact">
+        <div class="container">
+
+            <!-- Chart Section Heading -->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Biểu đồ thông số cảm biến</h2>
+
+            <!-- Icon Divider -->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Chart -->
+            <div class="row">
+                <div class="col-12 mx-auto">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active custom_aTag" id="nav-home-tab" data-toggle="tab" href="#tabHum" role="tab" aria-controls="nav-home" aria-selected="true">Độ ẩm không khí</a>
+                            <a class="nav-item nav-link custom_aTag" id="nav-profile-tab" data-toggle="tab" href="#tabTem" role="tab" aria-controls="nav-profile" aria-selected="false">Nhiệt Độ</a>
+                            <a class="nav-item nav-link custom_aTag" id="nav-contact-tab" data-toggle="tab" href="#tabSM" role="tab" aria-controls="nav-contact" aria-selected="false">Độ ẩm đất</a>
+                        </div>
+                    </nav>
+                    <div class="col mt-2">
+                        <div class="float-right mb-1">
+                            <input type="date" id="date" name="date" onchange="chartUpdate()" style="width: 200px;">
+                        </div>
+                        <div class="mb-1 float-left">
+                            <span>Xem theo tháng: </span>
+                            <!-- Rounded switch -->
+                            <label class="switch">
+                                <input type="checkbox" id="viewByMonth" onclick="switchViewMode()">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="tabHum" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="chartContainer" id="chartHum">
+                                <div style="display: none;" id="chartHumAlert">
+                                    <h3 style="color: saddlebrown;">
+                                        ***Ko có dữ liệu để hiển thị***
+                                    </h3>
+                                </div>
+                                <canvas id="chartHumidity" style="background-color: #cccccc;"></canvas>
+                                <div class="float-right">
+                                    <span id="avgHum">Trung Bình: NULL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabTem" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="chartContainer" id="chartTem">
+                                <div style="display: none;" id="chartTemAlert">
+                                    <h3 style="color: saddlebrown;">
+                                        ***Ko có dữ liệu để hiển thị***
+                                    </h3>
+                                </div>
+                                <canvas id="chartTemperature" style="background-color: #cccccc;"></canvas>
+                                <div class="float-right">
+                                    <span id="avgTem">Trung Bình: NULL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabSM" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="chartContainer" id="chartSM">
+                                <div style="display: none;" id="chartSMAlert">
+                                    <h3 style="color: saddlebrown;">
+                                        ***Ko có dữ liệu để hiển thị***
+                                    </h3>
+                                </div>
+                                <canvas id="chartSolidiMoisture" style="background-color: #cccccc;"></canvas>
+                                <div class="float-right">
+                                    <span id="avgSM">Trung Bình: NULL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-success btn-lg btn3d btn-xl" id="saveChart" onclick="saveChart()">Lưu hình ảnh biểu đồ</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ` Section -->
+    <section class="page-section" id="QRcode">
+        <div class="container">
+            <!-- heading -->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">QRcode</h2>
+            <!-- Icon Divider -->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- QRcode -->
+            <div class="row">
+                <div class="col" style="margin: auto;">
+                    <div class="input-group" style="max-width: 300px; margin: auto;">
+                        <input list="ID-list_1" class="form-control" name="" id="treeID_1" onclick="remove('1')" onchange="drawQRcode()">
+                        <datalist id="ID-list_1">
+                            <!-- list will be added by js when request info from DB finish -->
+                        </datalist>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="margin: auto;">
+                    *mặc định là ID của cây đang trồng
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="QRcodeIMG" style="margin: auto;">
+                </div>
+            </div>
+            <button class="btn btn-success btn-lg btn3d btn-xl" id="saveQRcode" onclick="saveQRImg()">Lưu hình</button>
+            <button class="btn btn-success btn-lg btn3d btn-xl" id="gotoCustomerPage" onclick="gotoWeb()">Đi đến trang web dành cho khách</button>
+        </div>
+
+    </section>
+    <!-- About Section -->
+    <section class="page-section bg-primary text-white mb-0" id="about">
+        <div class="container">
+
+            <!-- About Section Heading -->
+            <h2 class="page-section-heading text-center text-uppercase text-white">Thông tin</h2>
+
+            <!-- Icon Divider -->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="divider-custom-line"></div>
+            </div>
+
+            <!-- About Section Content -->
+            <div class="row">
+                <div class="col-lg-4 ml-auto">
+                    <p class="lead">Mục tiêu hàng đầu của dự án lần là hướng tới phục vụ nhu cầu trồng trọt trong nông nghiệp; thay thế việc tưới nước thủ công bằng tưới tự động, tăng năng suất cũng như chất lượng cây, tăng tính thẩm mỹ cho khu vườn.Dự án có các giải
+                        pháp hữu hiệu để cải tạo những bất cập nơi vườn trường, biến nơi đó thành “Khu vườn thông minh”.</p>
+                </div>
+                <div class="col-lg-4 mr-auto">
+                    <p class="lead">Với mục đích lớn nhất của dự án là lắp đặt một hệ thống tưới tiêu hiện đại có sử dụng công nghệ, giúp nông dân khi trồng các loại cây, hoa, rau sạch được thuận lợi hơn, đồng thời có thể chăm sóc chúng một cách tốt nhất, không mất quá
+                        nhiều sức lực mà cuối vụ vẫn có thể “bội thu"</p>
+                </div>
+            </div>
+
+            <!-- About Section Button -->
+            <div class="text-center mt-4">
+                <a class="btn btn-xl btn-outline-light" href="https://play.google.com/store?hl=vi">
+                    <i class="fas fa-download mr-2"></i> Tải SmartGarden App
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- Footer -->
+
+
+    <!-- Copyright Section -->
+    <section class="copyright py-4 text-center text-white">
+        <div class="container">
+
+            <span class="lead">
+            --NHÓM TÁC GIẢ-- <br>
+            TRƯƠNG THỊ NHƯ QUỲNH <br>
+            NGUYỄN THIỆN QUANG <br>
+            </span>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-to-top d-lg-none position-fixed">
+        <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="js/lib/freelancer.min.js"></script>
+    <!-- firebase cdn -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
+    <!-- firebase config -->
+    <script src="js/firebase/firebaseInit.js"></script>
+    <!-- interact with firebase -->
+    <script src="js/firebase/control.js"></script>
+    <script src="js/firebase/getCurState.js"></script>
+    <!-- generate ID -->
+    <script src="js/generateAutoID.js"></script>
+    <!-- custom date format in js -->
+    <script src="js/DateFormat.js"></script>
+    <!-- draw chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="js/drawChart.js"></script>
+    <!-- filesaver cdn -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <!-- convert to img -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <!-- save img -->
+    <script src="js/saveImg.js"></script>
+    <!-- toogle icon in card header when expand and collapse -->
+    <script src="js/toggleIcon.js"></script>
+    <!-- get all tree ID -->
+    <script src="js/add_optional_info/getIDfromDB.js"></script>
+    <!-- add optinal info to DB -->
+    <script src="js/add_optional_info/add_Info.js"></script>
+    <!-- modify tree info -->
+    <script src="js/add_optional_info/applyChange.js"></script>
+    <!-- QR code -->
+    <!-- <script type="text/javascript" src="js/lib/jquery-qrcode/jquery.qrcode.min.js"></script> -->
+    <script type="text/javascript" src="js/lib/jquery-qrcode/src/jquery.qrcode.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-qrcode/src/qrcode.js"></script>
+    <script src="js/drawQRcode.js"></script>
+</body>
+
+</html>

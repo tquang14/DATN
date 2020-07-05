@@ -1,0 +1,415 @@
+.icon {
+    background: url('/img/icon_soilmoisture.png');
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+}
+
+.tempIcon {
+    background: url('../img/celcius.svg');
+    width: 65px;
+    height: 65px;
+}
+
+#temperature {
+    margin: auto;
+}
+
+#icon-humidity {
+    background: url('../img/humidityIcon.svg');
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+#icon-SolidMoisture {
+    background: url('../img/SolidMoistureIcon.svg');
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+#icon-rain {
+    background: url('../img/rainIcon.svg');
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+#icon-checked {
+    background: url('../img/pencil.svg');
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+}
+
+#icon-del {
+    background: url('../img/delete.svg');
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+}
+
+#icon-x {
+    background: url('../img/interface.svg');
+    display: inline-block;
+    max-width: 38px;
+}
+
+.chartContainer {
+    width: auto;
+    height: auto;
+}
+
+.custom_aTag {
+    color: #2c3e50;
+    text-transform: uppercase;
+}
+
+#date {
+    background-color: #3CBC8D;
+    color: #2c3e50;
+    border: none;
+    border-bottom: 2px solid red;
+    border-radius: 4px;
+    /* outline: none; */
+}
+
+#date:hover {
+    background-color: #7bb1e7;
+    border: 1px solid #2c3e50;
+}
+
+.btn3d {
+    position: tive;
+    top: -6px;
+    border: 0;
+    transition: all 40ms linear;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.btn3d:active:focus,
+.btn3d:focus:hover,
+.btn3d:focus {
+    -moz-outline-style: none;
+    outline: medium none;
+}
+
+.btn3d:active,
+.btn3d.active {
+    top: 2px;
+}
+
+.btn3d.btn-white {
+    color: #666666;
+    box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255, 255, 255, 0.10) inset, 0 8px 0 0 #f5f5f5, 0 8px 8px 1px rgba(0, 0, 0, .2);
+    background-color: #fff;
+}
+
+.btn3d.btn-white:active,
+.btn3d.btn-white.active {
+    color: #666666;
+    box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, .1);
+    background-color: #fff;
+}
+
+.btn3d.btn-default {
+    color: #666666;
+    box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255, 255, 255, 0.10) inset, 0 8px 0 0 #BEBEBE, 0 8px 8px 1px rgba(0, 0, 0, .2);
+    background-color: #f9f9f9;
+}
+
+.btn3d.btn-default:active,
+.btn3d.btn-default.active {
+    color: #666666;
+    box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, .1);
+    background-color: #f9f9f9;
+}
+
+.btn3d.btn-primary {
+    box-shadow: 0 0 0 1px #417fbd inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #4D5BBE, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    background-color: #4274D7;
+}
+
+.btn3d.btn-primary:active,
+.btn3d.btn-primary.active {
+    box-shadow: 0 0 0 1px #417fbd inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+    background-color: #4274D7;
+}
+
+.btn3d.btn-success {
+    box-shadow: 0 0 0 1px #31c300 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #5eb924, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    background-color: #78d739;
+}
+
+.btn3d.btn-success:active,
+.btn3d.btn-success.active {
+    box-shadow: 0 0 0 1px #30cd00 inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+    background-color: #78d739;
+}
+
+.btn3d.btn-info {
+    box-shadow: 0 0 0 1px #2c3e50 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #1f2b38, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    background-color: #2c3e50;
+}
+
+.btn3d.btn-info:active,
+.btn3d.btn-info.active {
+    box-shadow: 0 0 0 1px #2c3e50 inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+    background-color: #2c3e50;
+}
+
+.btn3d.btn-warning {
+    box-shadow: 0 0 0 1px #d79a47 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #D79A34, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    background-color: #FEAF20;
+}
+
+.btn3d.btn-warning:active,
+.btn3d.btn-warning.active {
+    box-shadow: 0 0 0 1px #d79a47 inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+    background-color: #FEAF20;
+}
+
+.btn3d.btn-danger {
+    box-shadow: 0 0 0 1px #b93802 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #AA0000, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    background-color: #D73814;
+}
+
+.btn3d.btn-danger:active,
+.btn3d.btn-danger.active {
+    box-shadow: 0 0 0 1px #b93802 inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+    background-color: #D73814;
+}
+
+.btn3d.btn-magick {
+    color: #fff;
+    box-shadow: 0 0 0 1px #9a00cd inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #9823d5, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    background-color: #bb39d7;
+}
+
+.btn3d.btn-magick:active,
+.btn3d.btn-magick.active {
+    box-shadow: 0 0 0 1px #9a00cd inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+    background-color: #bb39d7;
+}
+
+.cardSwitch {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-custom {
+    padding: 0.2rem 1.25rem;
+}
+
+.device-img {
+    max-width: 60px;
+    height: 60px;
+    padding: 0px;
+    margin: 0px 10px;
+    filter: grayscale(0%);
+}
+
+.cardText {
+    margin: 0px;
+}
+
+.card-container {
+    padding: 15px 5px;
+}
+
+p.cardText {
+    font-size: 14px;
+    color: rgb(36, 115, 196);
+}
+
+
+/* Switch starts here */
+
+.rocker {
+    margin-bottom: 0em;
+    display: inline-block;
+    position: relative;
+    /*
+SIZE OF SWITCH
+==============
+All sizes are in em - therefore
+changing the font-size here
+will change the size of the switch.
+See .rocker-small below as example.
+*/
+    font-size: 0.4em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #888;
+    width: 7em;
+    height: 4em;
+    overflow: hidden;
+    border-bottom: 0.5em solid black;
+}
+
+.rocker-small {
+    font-size: 0.75em;
+    /* Sizes the switch */
+    margin: 1em;
+}
+
+.rocker::before {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #999;
+    border: 0.5em solid black;
+    border-bottom: 0;
+}
+
+.rocker input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch-left,
+.switch-right {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5em;
+    width: 3em;
+    transition: 0.2s;
+}
+
+.switch-left {
+    height: 2.4em;
+    width: 2.75em;
+    left: 0.85em;
+    bottom: 0.4em;
+    background-color: #ddd;
+    transform: rotate(15deg) skewX(15deg);
+}
+
+.switch-right {
+    right: 0.5em;
+    bottom: 0;
+    background-color: #bd5757;
+    color: #fff;
+}
+
+.switch-left::before,
+.switch-right::before {
+    content: "";
+    position: absolute;
+    width: 0.4em;
+    height: 2.45em;
+    bottom: -0.45em;
+    background-color: #ccc;
+    transform: skewY(-65deg);
+}
+
+.switch-left::before {
+    left: -0.4em;
+}
+
+.switch-right::before {
+    right: -0.375em;
+    background-color: transparent;
+    transform: skewY(65deg);
+}
+
+input:checked+.switch-left {
+    background-color: #0084d0;
+    color: #fff;
+    bottom: 0px;
+    left: 0.5em;
+    height: 2.5em;
+    width: 3em;
+    transform: rotate(0deg) skewX(0deg);
+}
+
+input:checked+.switch-left::before {
+    background-color: transparent;
+    width: 3.0833em;
+}
+
+input:checked+.switch-left+.switch-right {
+    background-color: #ddd;
+    color: #888;
+    bottom: 0.4em;
+    right: 0.8em;
+    height: 2.4em;
+    width: 2.75em;
+    transform: rotate(-15deg) skewX(-15deg);
+}
+
+input:checked+.switch-left+.switch-right::before {
+    background-color: #ccc;
+}
+
+
+/* Keyboard Users */
+
+input:focus+.switch-left {
+    color: #333;
+}
+
+input:checked:focus+.switch-left {
+    color: #fff;
+}
+
+input:focus+.switch-left+.switch-right {
+    color: #fff;
+}
+
+input:checked:focus+.switch-left+.switch-right {
+    color: #333;
+}
+
+.card-columns {
+    @include media-breakpoint-only(lg) {
+        column-count: 2;
+    }
+}
+
+.deviceSW-container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.page-section {
+    padding: 1rem 0 4rem 0;
+}
+
+#treeDetail {
+    display: inline-block;
+    color: darkgray;
+    font-size: 12px;
+}
+
+
+/* th {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    font-size: 15px;
+} */
+
+.hscroll {
+    overflow-x: auto;
+}
+
+.featureIcon {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+#tableContent {
+    font-weight: 500;
+}
