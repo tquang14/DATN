@@ -56,6 +56,13 @@
     max-width: 38px;
 }
 
+#icon-auto {
+    background: url('../img/automatic.svg');
+    display: inline-block;
+    min-height: 50px;
+    min-width: 50px;
+}
+
 .chartContainer {
     width: auto;
     height: auto;
