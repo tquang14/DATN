@@ -60,3 +60,11 @@ function changeDeviceCardStyle(device, mode) {
         alert("có lỗi trong quá trình điều khiển thiết bị");
     }
 }
+
+function autoBtn() {
+    if (mode === 'auto') {
+        firebase.database().ref('mode').set('manual');
+    } else if (mode === 'manual') {
+        firebase.database().ref('mode').set('auto');
+    }
+}

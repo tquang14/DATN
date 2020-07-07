@@ -1,7 +1,7 @@
 // get device current state
 const deviceRefs = ['bom', 'den', 'phunsuong', 'maiChe'];
 const IDs = ['pump', 'light', 'misting', 'roof'];
-
+let mode = '';
 for (let index = 0; index < deviceRefs.length; index++) {
     const deviceRef = deviceRefs[index];
     var sensor_state = firebase.database().ref(deviceRef + '/state');
@@ -54,9 +54,13 @@ var autoMode = firebase.database().ref('mode');
 autoMode.on('value', function(snapshot) {
     console.log(snapshot.val());
     if (snapshot.val() === "auto") {
+        mode = 'auto';
         document.getElementById('icon-auto').style.filter = 'grayscale(0%)';
+        $('#control').fadeOut(500);
     } else if (snapshot.val() === "manual") {
+        mode = 'manual';
         document.getElementById('icon-auto').style.filter = 'grayscale(100%)';
+        $('#control').fadeIn(500);
     } else {
         alert('ko phat hien mode auto/manual');
     }
