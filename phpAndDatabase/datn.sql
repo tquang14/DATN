@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 28, 2020 lúc 03:43 AM
+-- Thời gian đã tạo: Th5 29, 2020 lúc 02:54 PM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.9
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `optional_info` (
   `ID` char(8) DEFAULT NULL,
   `_index` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`_index`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Đang đổ dữ liệu cho bảng `optional_info`
@@ -75,7 +75,8 @@ INSERT INTO `optional_info` (`date`, `type`, `ID`, `_index`) VALUES
 ('2020-05-14 00:00:00', 'kali', 'gwv88e3w', 2),
 ('2020-04-01 00:00:00', 'apatit', 'gwv88e3w', 3),
 ('2020-05-20 19:39:00', 'tá»‰a lÃ¡', 'gwv88e3w', 4),
-('2020-05-19 22:12:00', 'test', '8psrqt2o', 6);
+('2020-05-19 22:12:00', 'test', '8psrqt2o', 6),
+('2020-05-29 19:43:00', 'BÃ³n phÃ¢n ASD', 'dn6fkotm', 10);
 
 -- --------------------------------------------------------
 
@@ -96,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `pack` (
 --
 
 INSERT INTO `pack` (`ID`, `datePack`, `location`, `address`) VALUES
-('gwv88e3w', '2020-05-27 10:24:00', 'ÄÃ  Láº¡t', '123/456, ABC, XYZ');
+('gwv88e3w', '2020-05-29 17:41:00', 'ÄÃ  Láº¡t', '123/456 ABCXYZ, tp ÄÃ  Láº¡t');
 
 -- --------------------------------------------------------
 
@@ -330,9 +331,7 @@ CREATE TABLE IF NOT EXISTS `tree` (
 INSERT INTO `tree` (`ID`, `name`, `dateStart`, `dateEnd`, `location`, `address`) VALUES
 ('8psrqt2o', 'CÃ  chua', '2020-05-19 21:58:00', '2020-08-19 09:58:00', 'SÃ i GÃ²n', '123/456 ABC, XYZ'),
 ('gl74r0mp', 'cÃ  chua', '2020-03-09 19:50:00', '2020-05-09 20:50:00', 'HÃ  Ná»™i', '123/456 ABC, XYZ'),
-('gwv88e3w', 'cÃ  chua', '2020-05-10 00:00:00', '2020-08-10 00:00:00', 'ÄÃ  Láº¡t', '123/456 phÆ°á»ng ABC, quáº­n XYZ'),
-('u4lgnkwc', 'Cáº£i chip', '2020-05-27 07:34:00', '2020-06-03 07:34:00', 'NÃ´ng trÆ°á»ng Vineco', 'Tá»• 12, áº¤p 5, XÃ£ Long PhÆ°á»›c, Huyá»‡n Long ThÃ nh, Tá»‰nh Äá»“ng Nai'),
-('vo97k8f1', 'test', '2020-05-20 21:57:00', '2020-08-20 21:57:00', 'test', '123/456 ABC, XYZ');
+('gwv88e3w', 'cÃ  chua', '2020-05-10 00:00:00', '2020-08-10 00:00:00', 'ÄÃ  Láº¡t', '123/456 phÆ°á»ng ABC, quáº­n XYZ');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

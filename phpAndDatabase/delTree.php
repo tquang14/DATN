@@ -11,6 +11,13 @@
             else {
                 echo "error";
             }
+            $sql = "DELETE FROM pack WHERE ID = '$id'";
+            if ($conn->query($sql) == TRUE) {
+                echo "remove successfully";
+            }
+            else {
+                echo "error";
+            }
         }
         elseif (isset($_GET['_index'])) {
             $_index = $_GET['_index'];

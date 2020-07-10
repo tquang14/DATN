@@ -53,15 +53,22 @@ function addPackInfo() {
         type: "POST",
         data: data,
         success: function(data) {
-            if (data == "ID existed") {
-                alert("Thông tin về cây đã tồn tại");
+            if (data.indexOf('ID existed') > -1) {
+                alert("Thông tin đóng gói của cây đã tồn tại, kiểm tra lại ID");
+            } else if (data.indexOf('No tree found') > -1) {
+                alert("Không tìm thấy cây, kiểm tra lại ID");
             } else {
                 alert("them thong tin thanh cong");
+                // remove UI after insert to DB successfully
+                document.getElementById('treePackID').value = "";
+                document.getElementById('datetimePack').value = "";
+                document.getElementById('locationPack').value = "";
+                document.getElementById('addressPack').value = "";
                 console.log(data);
             }
         },
         error: function(data) {
-
+            console.log(data);
         }
     });
 }

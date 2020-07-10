@@ -40,6 +40,23 @@ function applyChange() {
         type: "POST",
         data: optionalData,
         success: function(data) {
+            console.log(data);
+            getfullTreeInfo();
+        },
+        error: function(data) {
+            alert("Lỗi kết nối");
+            console.log(data);
+        }
+    });
+    var packDate = document.getElementById("modify_packDatetime").value;
+    var packLocation = document.getElementById("modify_packLocation").value;
+    var packAddress = document.getElementById("modify_packAddress").value;
+    var packData = { type: "pack_info", ID: ID, datePack: packDate, location: packLocation, address: packAddress };
+    $.ajax({
+        url: "http://" + ip + ":" + port + "/DATN/modify.php",
+        type: "POST",
+        data: packData,
+        success: function(data) {
             alert("Cập nhật thông tin thành công");
             console.log(data);
             getfullTreeInfo();

@@ -1,0 +1,266 @@
+html h4 {
+    color: #999;
+    font-weight: 500;
+}
+
+html h4:after {
+    content: "";
+    padding-left: 1px;
+}
+
+#rangePercent1:after {
+    content: "%";
+    padding-left: 1px;
+}
+
+#rangePercent2:after {
+    content: "%";
+    padding-left: 1px;
+}
+
+html input[type="range"] {
+    outline: 0;
+    border: 0;
+    border-radius: 500px;
+    width: 400px;
+    max-width: 100%;
+    margin: 10px 0 16px;
+    -webkit-transition: box-shadow 0.2s ease-in-out;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    html input[type="range"] {
+        overflow: hidden;
+        height: 20px;
+        -webkit-appearance: none;
+        background-color: #ddd;
+    }
+    html input[type="range"]::-webkit-slider-runnable-track {
+        height: 20px;
+        -webkit-appearance: none;
+        color: #444;
+        -webkit-transition: box-shadow 0.2s ease-in-out;
+        transition: box-shadow 0.2s ease-in-out;
+    }
+    html input[type="range"]::-webkit-slider-thumb {
+        width: 20px;
+        -webkit-appearance: none;
+        height: 20px;
+        cursor: ew-resize;
+        background: #fff;
+        box-shadow: -330px 0 0 320px #1597ff, inset 0 0 0 20px #1597ff;
+        border-radius: 50%;
+        -webkit-transition: box-shadow 0.2s ease-in-out;
+        transition: box-shadow 0.2s ease-in-out;
+        position: relative;
+    }
+    html input[type="range"]:active::-webkit-slider-thumb {
+        background: #fff;
+        box-shadow: -330px 0 0 320px #1597ff, inset 0 0 0 3px #1597ff;
+    }
+    html #temperatureRangeSlider:active::-webkit-slider-thumb {
+        background: #fff;
+        box-shadow: -330px 0 0 320px #ffbf00, inset 0 0 0 3px #ffbf00;
+    }
+    html #temperatureRangeSlider::-webkit-slider-thumb {
+        width: 20px;
+        -webkit-appearance: none;
+        height: 20px;
+        cursor: ew-resize;
+        background: #fff;
+        box-shadow: -330px 0 0 320px #ffbf00, inset 0 0 0 20px #ffbf00;
+        border-radius: 50%;
+        -webkit-transition: box-shadow 0.2s ease-in-out;
+        transition: box-shadow 0.2s ease-in-out;
+        position: relative;
+    }
+}
+
+html input[type="range"]::-moz-range-progress {
+    background-color: #43e5f7;
+}
+
+html input[type="range"]::-moz-range-track {
+    background-color: #9a905d;
+}
+
+html input[type="range"]::-ms-fill-lower {
+    background-color: #43e5f7;
+}
+
+html input[type="range"]::-ms-fill-upper {
+    background-color: #9a905d;
+}
+
+#h4-container {
+    width: 400px;
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#h4-container #h4-subcontainer {
+    width: 100%;
+    position: relative;
+}
+
+#h4-container #h4-subcontainer h4 {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    color: #fff !important;
+    font-size: 12px;
+    -webkit-transform-origin: center -10px;
+    transform-origin: center -10px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-transition: margin-top 0.15s ease-in-out, opacity 0.15s ease-in-out;
+    transition: margin-top 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+#h4-container #h4-subcontainer h4 span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 25px;
+    /* background-color: #ffaa00; */
+    /* border-radius: 0 50% 50% 50%; */
+    /* -webkit-transform: rotate(45deg); */
+    background: url('../img/thermometer.svg');
+    transform: rotate(0deg);
+    z-index: -1;
+}
+
+#temperatureRangeSlider:not(:active)+#h4-container h4 {
+    opacity: 0;
+    margin-top: -50px;
+    pointer-events: none;
+}
+
+#temperatureRangeSliderCont:active {
+    padding-bottom: 55px;
+}
+
+#h4-container1 {
+    width: 400px;
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#h4-container1 #h4-subcontainer1 {
+    width: 100%;
+    position: relative;
+}
+
+#h4-container1 #h4-subcontainer1 h4 {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    color: #fff !important;
+    font-size: 12px;
+    -webkit-transform-origin: center -10px;
+    transform-origin: center -10px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-transition: margin-top 0.15s ease-in-out, opacity 0.15s ease-in-out;
+    transition: margin-top 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+#h4-container1 #h4-subcontainer1 h4 span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #1597ff;
+    border-radius: 0 50% 50% 50%;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+#humidityRangeSlider:not(:active)+#h4-container1 h4 {
+    opacity: 0;
+    margin-top: -50px;
+    pointer-events: none;
+}
+
+#humidityRangeSliderCont:active {
+    padding-bottom: 55px;
+}
+
+#h4-container2 {
+    width: 400px;
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#h4-container2 #h4-subcontainer2 {
+    width: 100%;
+    position: relative;
+}
+
+#h4-container2 #h4-subcontainer2 h4 {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    color: #fff !important;
+    font-size: 12px;
+    -webkit-transform-origin: center -10px;
+    transform-origin: center -10px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-transition: margin-top 0.15s ease-in-out, opacity 0.15s ease-in-out;
+    transition: margin-top 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+#h4-container2 #h4-subcontainer2 h4 span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #1597ff;
+    border-radius: 0 50% 50% 50%;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+#SMRangeSlider:not(:active)+#h4-container2 h4 {
+    opacity: 0;
+    margin-top: -50px;
+    pointer-events: none;
+}
+
+#SMRangeSliderCont:active {
+    padding-bottom: 55px;
+}
