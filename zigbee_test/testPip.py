@@ -5,7 +5,7 @@ import glob
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
-# catch error if pyserial is not installed than install it
+# catch error if any of the following module is not installed than install it
 while True:
     try:
         import serial
@@ -14,6 +14,22 @@ while True:
         print("trying to install pyserial module, pls waite")
         install('pyserial')
 
+while True:
+    try:
+        import pymysql
+        break
+    except ImportError:
+        print("trying to install pyserial module, pls waite")
+        install('PyMySQL')
+
+while True:
+    try:
+        import keyboard
+        break
+    except ImportError:
+        print("trying to install keyboard module, pls waite")
+        install('keyboard')
+ 
 def ListingPort():
     """ Lists serial port names
 
@@ -42,7 +58,23 @@ def ListingPort():
             pass
     return result
 
+def addToDB(t, h, sm):
+    # add 3 sensor value: temperature, humidity and soil moisture to MySQL DB
+    db = pymysql.connect("localhost","root","","datn" )
+    cursor = db.cursor()
+    sql = "INSERT INTO sensorVal(temperature, humidity, solidiMoisture) VALUE ({0}, {1}, {2})".format(t, h, sm)
+    cursor.execute(sql)
+    db.commit()
+    db.close()
+
+def sliceData(data, keyword):
+    startIndex = data.find(keyword)
+    if (startIndex == -1):
+        return 'none'
+    endIndex = startIndex + len(keyword) + 5 #sensorval lenghts 5 characters
+    return data[startIndex + len(keyword) : endIndex]
 if __name__ == '__main__':
+    #connect com port
     avaliblePorts = ListingPort()
     print("choose one of the following avalible ports: ")
     if (len(avaliblePorts) == 0):
@@ -55,4 +87,13 @@ if __name__ == '__main__':
     while not 1 <= userPort < len(avaliblePorts) + 1:
         userPort = int( input("enter port's index: ") )
     zigbee = serial.Serial(avaliblePorts[int(userPort) - 1], 9600)
-    print(zigbee.name)
+    # connect to db
+    
+    while True:
+        data = zigbee.readline().decode('utf-8')
+        # check if not null => new data arrived
+        if data:
+            t = sliceData(data, 't=')
+            h = sliceData(data, 'h=')
+            sm = sliceData(data, 'sm=')
+            addToDB(t, h, sm)
